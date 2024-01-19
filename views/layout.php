@@ -22,7 +22,7 @@
     </main>
     <footer>
       <div class="container center">
-        <p> Copyright© 2024 | Sarah.L | Tous droits réservés</p>
+        <p> Copyright© 2024</p>
       </div>
     </footer>
 </body>
