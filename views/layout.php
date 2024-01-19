@@ -6,7 +6,7 @@
     <title>Soucishop</title>
     <link rel="stylesheet" href="./styles/style.css">
 </head>
-<body id="contain">
+<body>
     <header>
       <div class="navbar-contain">
         <div class="hamburger-menu">
