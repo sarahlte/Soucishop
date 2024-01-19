@@ -1,5 +1,5 @@
 <?php
-$availableRoutes = ['homepage', 'sushis', 'makis', 'user', 'admin', 'menu'];
+$availableRoutes = ['homepage', 'sushis', 'makis', 'user', 'admin', 'menus', 'basket'];
 
 $route = 'homepage';
 
