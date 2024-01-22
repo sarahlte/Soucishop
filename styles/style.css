@@ -34,6 +34,10 @@ a{
     padding: 0 25px;
 }
 
+hr{
+  margin: 10px 0;
+}
+
 /* SCROLLBAR */
 
 
@@ -389,6 +393,14 @@ align-items: center;
     display: flex;
     flex-direction: row;
     gap: 10px;
+  }
+
+  .calories{
+    padding: 3px;
+    margin-top: 5px;
+    background-color: var(--mtransp1);
+    width: 90px;
+    text-align: center;
   }
 
   .button-display{
