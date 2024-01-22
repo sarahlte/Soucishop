@@ -10,6 +10,20 @@ require './controllers/products_controller.php';
                 <div class="hp-txt-card">
                     <div class="card-title"><?= $product['nom'] ?></div>
                     <div class="card-txt"><?= $product['description'] ?></div>
+                    <div><?php 
+                            $cal = 0;
+                            $aliments_products = $bdd->prepare("SELECT * FROM aliment_produit WHERE produit_id = :id");
+                            $aliments_products->execute([
+                            ':id'=>$product['id']
+                            ]);
+                            foreach ($aliments_products as $ap){
+                                $aliments = $bdd->prepare("SELECT * FROM aliment WHERE id = :id");
+                                $aliments->execute([
+                                ':id'=>$ap['aliment_id']]); 
+                                foreach ($aliments as $aliment) { ?>
+                                <?= $aliment['nom'];?> — <?= $ap['nb']?> g <br>
+                            <?php $cal += (($ap['nb']*$aliment['calories'])/$aliment['poids']); }};?> <?= $cal ?> calories 
+                    </div>
                     <div class="card-price">
                         <div href="?page=sushis" class="card-link-price"><?= $product['prix vente'] ?> €</div>
                         <a href="?page=sushis" class="card-link-price">ajouter au panier -></a>
