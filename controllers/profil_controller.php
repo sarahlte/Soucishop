@@ -1,11 +1,8 @@
 <?php 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    if ($stmt->execute()) {
-        $_SESSION['status'] = 'success';
-        $_SESSION['message'] = 'Vos informations ont été modifiées !';
-        header("Location: ?page=connexion");
-        die();
-    }
+if (!isset($_SESSION['connexion'])) {
+    $_SESSION['status'] = 'error';
+    $_SESSION['message'] = 'Veuillez vous connecter pour consulter votre profil !';
+    header("Location: ?page=login");
+    exit();
 }
