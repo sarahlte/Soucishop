@@ -1,7 +1,6 @@
 <?php
 
-require './controllers/bdd.php';
-require dirname(__DIR__) . '/view/logout.php';
+require 'bdd.php';
 
 $_SESSION = array();
 
