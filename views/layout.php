@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400&family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
     <header>
@@ -44,5 +50,19 @@
         Copyright© 2024
       </div>
     </footer>
+    <?php
+    if(ENVIRONNEMENT === 'developpement'){
+      var_dump($_SESSION);
+    }
+    ?>
+    <?php 
+    if(!empty ($_SESSION['status'])){ ?>
+      <script>
+         toastr.<?= $_SESSION['status'] ?>("<?= $_SESSION['message'] ?>")
+      </script>
+    <?php
+  unset ($_SESSION['status']);
+  unset ($_SESSION['message']);
+   } ?>
 </body>
 </html>
