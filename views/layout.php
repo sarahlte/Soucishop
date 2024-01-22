@@ -26,11 +26,11 @@
           </ul>
         </div>
         <div class="logopan">
-          <a class="panier" href="#">inscription</a>
+          <a class="panier" href="?page=register">inscription</a>
           <a class="panier" href="#">connexion</a>
           <div class="notif-panier">0</div>
           <a class="panier" href="#">panier</a>
-          <img class="logo" src="./assets/logo">
+          <img class="logo" src="./assets/logomini.png">
         </div>
       </div>
     </header>
