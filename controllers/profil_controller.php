@@ -6,6 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['status'] = 'success';
         $_SESSION['message'] = 'Vos informations ont été modifiées !';
         header("Location: ?page=connexion");
-        exit();
+        die();
     }
 }

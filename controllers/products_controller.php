@@ -15,9 +15,3 @@ if ($_GET['page'] == 'makis'){
     $menus = $bdd->prepare("SELECT * FROM menu");
     $menus->execute();
 }
-
-$aliments = $bdd->prepare("SELECT * FROM aliment-produit");
-$aliments->execute();
-
-$aliment = $bdd->prepare("SELECT * FROM aliment");
-$aliment->execute();
