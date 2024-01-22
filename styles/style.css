@@ -4,6 +4,7 @@
     --bg3: #242424;
     --txt1: #f2f2f2;
     --mainc1: #f53b22;
+    --mainc2: #d63b27;
 }
 
 body{
@@ -16,7 +17,7 @@ body{
     width: 100%;
     font-family: 'Inter', sans-serif;
     color: var(--txt1);
-    font-size: 11px;
+    font-size: 12px;
     background-image: url(../assets/fond.png);
     background-position: top center;
     background-repeat: no-repeat;
@@ -56,7 +57,26 @@ a{
 .panier{
     font-size: 12px;
     text-transform: uppercase;
-    overflow: hidden;
+    display: block;
+    position: relative;
+    padding: 0.2em 0;
+}
+
+.panier:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: var(--mainc1);
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+}
+
+.panier:hover:after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
 }
 
 .notif-panier{
@@ -161,4 +181,90 @@ a{
     background-color: var(--bg3);
     font-size: 10px;
     text-transform: uppercase;
+  }
+
+
+
+  /** REGISTER **/
+
+
+
+  .display-log{
+    display: flex;
+    background-color: var(--bg2);
+    margin: 50px 100px;
+  }
+
+  .register-log{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--mainc1);
+    width: 30%;
+    height: auto;
+    padding: 16% 20px;
+    gap: 20px;
+  }
+
+  .register-txt{
+    text-align: center;
+  }
+
+  .register-button{
+    background-color: var(--txt1);
+    color: var(--mainc1);
+    border-radius: 20px;
+    padding: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  .register-button:hover{
+    padding-left: 25px;
+    transition: 0.3s;
+  }
+
+  .register-display{
+    padding: 20px;
+    margin: auto;
+  }
+
+  .register-disp{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+  }
+
+  .register-input{
+    border: 1px solid var(--txt1);
+    background: none;
+    padding: 15px;
+    color: var(--txt1);
+    width: 600px;
+    border-radius: 5px;
+  }
+
+  .register-submit{
+    background-color: var(--mainc1);
+    border: 0;
+    color: var(--txt1);
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+
+  .register-submit:hover{
+    background-color: var(--mainc2);
+    transition: 0.3s;
+  }
+
+  .login-log{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--mainc1);
+    width: 30%;
+    height: auto;
+    padding: 11% 20px;
+    gap: 20px;
   }
