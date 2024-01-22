@@ -14,6 +14,11 @@ require './controllers/products_controller.php';
                         <div class="card-link-price"><?= $product['prix vente'] ?> €</div>
                         <a href="?page=sushis" class="card-link-price">ajouter au panier -></a>
                     </div>
+                    <hr>
+                    <div class="card-txt">
+                    <?php foreach ($aliment as $aliments) { ?>
+                            — <?= $mp['nb'];?> x <?= $aliments['nom']?></br>
+                            <?php $price += (($product['prix vente']-0.2)*$mp['nb']); };?></div>
                 </div>
             </div>
         <?php endforeach; ?>

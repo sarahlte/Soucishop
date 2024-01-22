@@ -25,7 +25,6 @@
           </label>
 
           <ul class="menu__box">
-            <li><a class="menu__item" href="?page=homepage">Accueil</a></li>
             <li><a class="menu__item" href="?page=profil">Mon profil</a></li>
             <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'):?>
             <li><a class="menu__item" href="#">Ajouter un produit</a></li>
@@ -34,6 +33,7 @@
             <?php endif ?>
             <li><a class="menu__item" href="?page=contact">Nous contacter</a></li>
           </ul>
+          <a class="panier" href="?page=homepage">Accueil</a>
         </div>
         <div class="logopan">
           <?php if(isset($_SESSION['connexion']) && $_SESSION['connexion'] == 'connected'):?>
@@ -42,8 +42,8 @@
           <a class="panier" href="?page=register">inscription</a>
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
-          <div class="notif-panier">0</div>
           <a class="panier" href="#">panier</a>
+          <div class="notif-panier">0</div>
           <img class="logo" src="./assets/logomini.png">
         </div>
       </div>

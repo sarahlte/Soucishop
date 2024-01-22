@@ -64,6 +64,12 @@ a{
 
 
 
+.hamburger-menu{
+display: flex;
+flex-direction: row;
+gap: 20px;
+align-items: center;
+}
 
 .navbar-contain{
     display: flex;
@@ -270,6 +276,11 @@ a{
     border-radius: 5px;
   }
 
+  .area{
+    min-height: 100px;
+    font-family: inter;
+  }
+
   .register-submit{
     background-color: var(--mainc1);
     border: 0;
@@ -434,4 +445,16 @@ a{
 
 .txt-card{
   margin: 10px;
+}
+
+/* PROFIL */
+
+.profil-log{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mainc1);
+  width: 20%;
+  height: auto;
+  padding: 20% 20px;
+  gap: 20px;
 }

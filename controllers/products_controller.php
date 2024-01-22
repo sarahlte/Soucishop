@@ -14,21 +14,10 @@ if ($_GET['page'] == 'makis'){
 } else {
     $menus = $bdd->prepare("SELECT * FROM menu");
     $menus->execute();
-    /* foreach ($menus as $menu){
-        $menus_products = $bdd->prepare("SELECT * FROM menu_produit WHERE menu_id = :id");
-        $menus_products->execute([
-            ':id'=>$menu['id']
-        ]);
-        foreach ($menus_products as $mp){
-            $products = $bdd->prepare("SELECT * FROM produit WHERE id = :id");
-            $products->execute([
-                ':id'=>$mp['produit_id']
-            ]); 
-        }
-    } */
-    
 }
 
+$aliments = $bdd->prepare("SELECT * FROM aliment-produit");
+$aliments->execute();
 
-
-
+$aliment = $bdd->prepare("SELECT * FROM aliment");
+$aliment->execute();

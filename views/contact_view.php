@@ -21,7 +21,7 @@ require './controllers/contact_controller.php'
                     </div>
                     <div class="register-disp">
                         <label for="message" class="register-label">Votre message</label>
-                        <textarea type="text" placeholder="Votre message" name="message" class="register-input"></textarea>
+                        <textarea type="text" placeholder="Votre message" name="message" class="register-input area"></textarea>
                     </div>
                     <div class="register-disp">
                         <input type="submit" class="register-submit" value ="Envoyer">
