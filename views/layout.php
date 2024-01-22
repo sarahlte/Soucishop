@@ -27,15 +27,21 @@
           <ul class="menu__box">
             <li><a class="menu__item" href="?page=homepage">Accueil</a></li>
             <li><a class="menu__item" href="#">Mon profil</a></li>
+            <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'):?>
             <li><a class="menu__item" href="#">Ajouter un produit</a></li>
             <li><a class="menu__item" href="#">Commandes</a></li>
             <li><a class="menu__item" href="#">Chiffre d'affaire</a></li>
+            <?php endif ?>
             <li><a class="menu__item" href="#">Nous contacter</a></li>
           </ul>
         </div>
         <div class="logopan">
+          <?php if(isset($_SESSION['connexion']) && $_SESSION['connexion'] == 'connected'):?>
+          <a class="panier" href="?page=logout">deconnexion</a>
+          <?php else : ?>
           <a class="panier" href="?page=register">inscription</a>
           <a class="panier" href="?page=login">connexion</a>
+          <?php endif; ?>
           <div class="notif-panier">0</div>
           <a class="panier" href="#">panier</a>
           <img class="logo" src="./assets/logomini.png">

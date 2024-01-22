@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch();
 
     if ($user && password_verify($_POST['password'], $user['password'])) {
-        $_SESSION['status'] = 'connected';
+        $_SESSION['connexion'] = 'connected';
         $_SESSION['id'] = $user['id'];
         $_SESSION['nom'] = $user['nom'];
         $_SESSION['prenom'] = $user['prenom'];
