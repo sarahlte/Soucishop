@@ -3,7 +3,7 @@ require './controllers/products_controller.php';
 ?>
 
 <div>
-    <ul><div class="container hp-card-contain">
+    <div class="container hp-card-contain">
         <?php foreach ($products as $product) : ?>
             <div class="hp-card">
                 <div class="hp-img"><img src="./assets/<?= $product['img1']?>" class="hp-button-img"></div>
