@@ -2,7 +2,6 @@
 
 require 'bdd.php';
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "SELECT * FROM utilisateur WHERE email = :email";
     $stmt = $bdd->prepare($query);
@@ -22,6 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: ?page=homepage");
         exit();
     } else {
-        echo "Invalid email or password.";
+        echo "Email ou mot de passe invalide";
     }
 }
