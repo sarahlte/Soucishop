@@ -1,4 +1,6 @@
 <?php
+session_start ();
+define('ENVIRONNEMENT', 'developpement');
 $availableRoutes = ['homepage', 'sushis', 'makis', 'user', 'admin', 'menus', 'basket', 'register', 'login'];
 
 $route = 'homepage';

@@ -17,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['nom'] = $user['nom'];
         $_SESSION['prenom'] = $user['prenom'];
         $_SESSION['role'] = $user['role'];
+        $_SESSION['status'] = 'success';
+        $_SESSION['message'] = 'Vous vous êtes bien connecté.e !';
         header("Location: ?page=homepage");
         exit();
     } else {

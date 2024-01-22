@@ -14,7 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(2, $prenom, PDO::PARAM_STR);
     $stmt->bindParam(3, $email, PDO::PARAM_STR);
     $stmt->bindParam(4, $password, PDO::PARAM_STR);
+
     if ($stmt->execute()) {
+        $_SESSION['status'] = 'success';
+        $_SESSION['message'] = 'Vous vous êtes bien enregistré.e !';
         header("Location: ?page=connexion");
+        exit();
     }
 }
