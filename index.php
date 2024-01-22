@@ -2,7 +2,7 @@
 session_start ();
 
 define('ENVIRONNEMENT', 'developpement');
-$availableRoutes = ['homepage', 'sushis', 'makis', 'user', 'admin', 'menus', 'basket', 'register', 'login', 'logout'];
+$availableRoutes = ['homepage', 'sushis', 'makis', 'user', 'admin', 'menus', 'basket', 'register', 'login', 'logout', 'contact'];
 
 $route = 'homepage';
 

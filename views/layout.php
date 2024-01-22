@@ -32,7 +32,7 @@
             <li><a class="menu__item" href="#">Commandes</a></li>
             <li><a class="menu__item" href="#">Chiffre d'affaire</a></li>
             <?php endif ?>
-            <li><a class="menu__item" href="#">Nous contacter</a></li>
+            <li><a class="menu__item" href="?page=contact">Nous contacter</a></li>
           </ul>
         </div>
         <div class="logopan">
