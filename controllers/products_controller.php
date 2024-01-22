@@ -11,6 +11,20 @@ if ($_GET['page'] == 'makis'){
     $products->execute([
         'categorie' => 'sushi'
     ]);
+} else {
+
+
+    foreach ($menus as $menu){
+        $menus_products = $bdd->prepare("SELECT * FROM menu_prduit WHERE id_menu = :id");
+        $menus_products->execute([
+            ':id'=>$menu['id']
+        ]);
+        $products = $bdd->prepare("SELECT * FROM produit WHERE id = :id");
+        $products->execute([
+            ':id'=>$menu['id']
+        ]); 
+    }
+    
 }
 
 

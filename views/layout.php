@@ -16,8 +16,8 @@
           </label>
 
           <ul class="menu__box">
-            <li><a class="menu__item" href="#">Accueil</a></li>
-            <li><a class="menu__item" href="#">Mon panier</a></li>
+            <li><a class="menu__item" href="?page=homepage">Accueil</a></li>
+            <li><a class="menu__item" href="?page=basket">Mon panier</a></li>
             <li><a class="menu__item" href="#">Mon profil</a></li>
             <li><a class="menu__item" href="#">Ajouter un produit</a></li>
             <li><a class="menu__item" href="#">Commandes</a></li>

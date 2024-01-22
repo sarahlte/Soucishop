@@ -1,7 +1,7 @@
 <?php
 
-require './controllers/bdd.php';
-require dirname(__DIR__) . '/views/login_view.php';
+require 'bdd.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "SELECT * FROM utilisateur WHERE email = :email";
