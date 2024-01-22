@@ -1,3 +1,7 @@
+<?php 
+require './controllers/login_controller.php';
+?>
+
 <body>
     <main>
         <container>
@@ -15,7 +19,7 @@
                     </div>
                     <div class="register-disp">
                         <label for="mdp" class="register-label">Mot de passe</label>
-                        <input type="password" placeholder="Mot de passe" name="mdp" class="register-input">
+                        <input type="password" placeholder="Mot de passe" name="password" class="register-input">
                     </div>
                     <div class="register-disp">
                         <input type="submit" class="register-submit" value ="Se connecter">
