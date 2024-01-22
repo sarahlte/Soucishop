@@ -3,7 +3,7 @@ require 'bdd.php';
 
 if ($_GET['page'] == 'makis'){
     $products = $bdd->prepare("SELECT * FROM produit WHERE categorie = :categorie");
-    $product->execute([
+    $products->execute([
         'categorie' => 'roll'
     ]);
 } else if ($_GET['page'] == 'sushis'){
@@ -12,18 +12,20 @@ if ($_GET['page'] == 'makis'){
         'categorie' => 'sushi'
     ]);
 } else {
-
-
-    foreach ($menus as $menu){
-        $menus_products = $bdd->prepare("SELECT * FROM menu_prduit WHERE id_menu = :id");
+    $menus = $bdd->prepare("SELECT * FROM menu");
+    $menus->execute();
+    /* foreach ($menus as $menu){
+        $menus_products = $bdd->prepare("SELECT * FROM menu_produit WHERE menu_id = :id");
         $menus_products->execute([
             ':id'=>$menu['id']
         ]);
-        $products = $bdd->prepare("SELECT * FROM produit WHERE id = :id");
-        $products->execute([
-            ':id'=>$menu['id']
-        ]); 
-    }
+        foreach ($menus_products as $mp){
+            $products = $bdd->prepare("SELECT * FROM produit WHERE id = :id");
+            $products->execute([
+                ':id'=>$mp['produit_id']
+            ]); 
+        }
+    } */
     
 }
 
