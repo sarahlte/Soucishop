@@ -6,7 +6,7 @@
                     <div class="register-txt">
                         Vous avez déjà un compte ?
                     </div>
-                    <a href="#" class="register-button">se connecter -></a>
+                    <a href="?page=login" class="register-button">se connecter -></a>
                 </div>
                 <form action="" method="post" enctype="multipart/form-data" class="register-display">
                     <div class="register-disp">
