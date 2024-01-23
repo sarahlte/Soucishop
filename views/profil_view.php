@@ -8,7 +8,7 @@ require './controllers/profil_controller.php';
             Bienvenue sur votre profil. Vous pouvez ici modifier les informations de votre compte.
         </div>
     </div>
-            <form action="" method="post" enctype="multipart/form-data"class="register-display">
+            <form action="" method="post" enctype="multipart/form-data" class="register-display">
                 <div class="register-disp">
                     <label for="Nom" class="register-label">Nom</label>
                     <input type="text" placeholder="Nom" name="nom" class="register-input">
