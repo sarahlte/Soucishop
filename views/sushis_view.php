@@ -12,7 +12,7 @@ require './controllers/products_controller.php';
                     <div class="card-txt"><?= $product['description'] ?></div>
                     <div class="card-price">
                         <div class="card-link-price"><?= $product['prix vente'] ?> €</div>
-                        <a href="?page=sushis" class="card-link-price">ajouter au panier -></a>
+                        <button class="card-link-price">ajouter au panier -></button>
                     </div>
                     <hr>
                     <div><?php 

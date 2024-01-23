@@ -382,6 +382,9 @@ align-items: center;
     text-align: center;
     border-radius: 5px;
     transition: 0.3s;
+    border: 0;
+    font-family: inter;
+    color: var(--txt1);
   }
 
   .card-link-price:hover{
