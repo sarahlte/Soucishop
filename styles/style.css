@@ -473,3 +473,73 @@ align-items: center;
   padding: 20% 20px;
   gap: 20px;
 }
+
+
+/* PANIER */
+
+
+
+.comm-table{
+  width: 100%;
+}
+
+.comm-head{
+  width: 100%;
+  background: var(--mainc1);
+}
+
+.comm-tit{
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.comm-ele{
+  padding: 8px;
+}
+
+.modif{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.comm-modif{
+  width: 30px;
+  height: 30px;
+  border: 0;
+  color: var(--txt1);
+  font-family: inter;
+  background-color: var(--mainc1);
+  border-radius: 50px;
+  text-align: center;
+  line-height: 30px;
+  padding: 0;
+}
+
+.comm-payer{
+  background-color: var(--mainc1);
+  border: 0;
+  font-family: inter;
+  color: var(--txt1);
+  padding: 5px 25px;
+  border-radius: 2px;
+  line-height: 15px;
+}
+
+table {
+  border:none;
+  border-collapse: collapse;
+}
+
+table td{
+  height: 30px;
+}
+
+table tr {
+  border-bottom: 1px solid var(--bg3);
+}
+
+table tr:last-child {
+  border-bottom: none;
+}

@@ -1,5 +1,6 @@
 <?php 
 require './controllers/products_controller.php';
+require './controllers/basket_controller.php';
 ?>
 
 <div>
@@ -12,17 +13,17 @@ require './controllers/products_controller.php';
                     <div class="card-txt"><?= $product['description'] ?></div>
                     <div class="card-price">
                         <div class="card-link-price"><?= $product['prix vente'] ?> €</div>
-                        <a href="?page=sushis" class="card-link-price">ajouter au panier -></a>
+                        <button value="<?= $product['id']?>" class="card-link-price">ajouter au panier -></button>
                         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
                             <form action="?page=modify" method="post">
                                 <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                                 <input type="hidden" name="type" value="produit"/>
-                                <button type="submit" name="id" value="<?= $product['id']?>">Modifier</button>
+                                <button class="card-link-price" type="submit" name="id" value="<?= $product['id']?>">Modifier</button>
                             </form>
                             <form  method="post">
                                 <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                                 <input type="hidden" name="type" value="produit"/>
-                                <button type="submit" name="delete" value="<?= $product['id']?>">Supprimer</button>
+                                <button class="card-link-price" type="submit" name="delete" value="<?= $product['id']?>">Supprimer</button>
                             </form>
                         <?php }?>
                     </div>
@@ -45,5 +46,11 @@ require './controllers/products_controller.php';
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php
+        var_dump($products); 
+        ?>
     </div>
 </div>
+
+
+
