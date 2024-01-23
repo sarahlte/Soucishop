@@ -39,7 +39,7 @@ require './controllers/products_controller.php';
                             ':id'=>$mp['produit_id']]); 
                                 foreach ($products as $product) { ?>
                             — <?= $mp['nb'];?> x <?= $product['nom']?></br>
-                            <?php $price += (($product['prix vente']-0.2)*$mp['nb']); }};?>
+                            <?php $price += (($product['prix_vente']-0.2)*$mp['nb']); }};?>
                     </div>
                     <div class="card-price">
                         <div class="card-link-price"><?= $price ?> €</div>
