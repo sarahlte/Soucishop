@@ -26,10 +26,10 @@ if (!empty($_POST)) {
        $errors[] = 'Veuillez remplir le champ "message"';
    }
 
-   /*  if (empty($errors)) {
+    if (empty($errors)) {
        $toEmail = 'sarah.leconte@coda-student.school';
        $emailSubject = 'New email from your contact form';
-       $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=utf-8'];
+       $headers = ['From' => 'lecontesarah21@gmail.com', 'Reply-To' => $email, 'Content-type' => 'text/html; charset=utf-8'];
        $bodyParagraphs = ["Name: {$name}", "Prénom: {$firstname}", "Email: {$email}", "Message:", $message];
        $body = join(PHP_EOL, $bodyParagraphs);
 
@@ -44,7 +44,7 @@ if (!empty($_POST)) {
     } else {
        $allErrors = join('<br/>', $errors);
        $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
-    } */
+    } 
 }
 
 
