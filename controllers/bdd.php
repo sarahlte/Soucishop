@@ -2,13 +2,13 @@
 
 $system_info = php_uname();
 if (strpos($system_info, 'Windows') !== false) {
-    $dsn = 'mysql:host=localhost;dbname=soucishop;charset=utf8';
-    $username = 'root';
-    $password = '';
+    $dsn = 'mysql:host='.SERVER.';dbname='.PORT.';charset=utf8';
+    $username = USER;
+    $password = PASSWORDW;
 } else {
-    $dsn = 'mysql:host=localhost;dbname=soucishop;charset=utf8;port=8889';
-    $username = 'root';
-    $password = 'root';
+    $dsn = 'mysql:host='.SERVER.';dbname='.PORT.';charset=utf8;port=8889';
+    $username = USER;
+    $password = PASSWORDM;
 }
 
 try

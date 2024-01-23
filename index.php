@@ -1,7 +1,12 @@
 <?php
 session_start ();
+require 'conf/conf.php';
+require 'require/bdd.php';
 
-define('ENVIRONNEMENT', 'developpement');
+
+if (!isset($_SESSION['token'])) {
+    $_SESSION['token'] = md5(uniqid(mt_rand(), true));
+}
 $availableRoutes = ['homepage', 'sushis', 'makis', 'user', 'admin', 'menus', 'basket', 'register', 'login', 'logout', 'contact', 'profil'];
 
 $route = 'homepage';
