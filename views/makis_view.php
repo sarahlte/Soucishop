@@ -1,6 +1,6 @@
 <?php 
 require './controllers/products_controller.php';
-include './controllers/basket_controller.php';
+require './controllers/basket_controller.php';
 $panier = new Panier;
 ?>
 
@@ -24,7 +24,7 @@ $panier = new Panier;
                             <form  method="post">
                                 <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
                                 <input type="hidden" name="type" value="produit"/>
-                                <button class="card-link-price" type="submit" name="delete" value="<?= $product['id']?>">Supprimer</button>
+                                <button class="card-link-price" type="submit" name="delete" value="<?= $product['id']?>">X</button>
                             </form>
                         <?php }?>
                     </div>
