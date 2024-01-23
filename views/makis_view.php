@@ -15,6 +15,7 @@ require './controllers/products_controller.php';
                         <a href="?page=sushis" class="card-link-price">ajouter au panier -></a>
                         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
                             <form action="?page=modify" method="post">
+                                <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                                 <input type="hidden" name="type" value="produit"/>
                                 <button type="submit" name="id" value="<?= $product['id']?>">Modifier</button>
                             </form>
