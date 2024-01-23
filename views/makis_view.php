@@ -6,7 +6,7 @@ require './controllers/products_controller.php';
     <div class="container hp-card-contain">
         <?php foreach ($products as $product) : ?>
             <div class="hp-card">
-                <div class="hp-img"><img src="./assets/<?= $product['img1']?>" class="hp-button-img"></div>
+                <div class="hp-img"><img src="data:image/jpg;base64,<?= base64_encode($product['img2'])?>" class="hp-button-img"></div>
                 <div class="hp-txt-card">
                     <div class="card-title"><?= $product['nom'] ?></div>
                     <div class="card-txt"><?= $product['description'] ?></div>

@@ -1,4 +1,4 @@
-<div style="position: fixed; top:100px; right:0px; width:300px; border: 1px solid red">
+<div style="position: fixed; top:100px; right:0px; width:300px;background-color:black;padding:5px; border: 1px solid red">
 <?php
 echo "SESSION :";
 echo '<pre>';
