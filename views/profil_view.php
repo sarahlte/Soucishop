@@ -11,15 +11,15 @@ require './controllers/profil_controller.php';
             <form action="" method="post" enctype="multipart/form-data" class="register-display">
                 <div class="register-disp">
                     <label for="Nom" class="register-label">Nom</label>
-                    <input type="text" placeholder="Nom" name="nom" class="register-input">
+                    <input type="text" placeholder="Nom" name="nom" class="register-input" value="<?= $user['nom']?>">
                 </div>
                 <div class="register-disp">
                     <label for="prenom" class="register-label">Prénom</label>
-                    <input type="text" placeholder="Prénom" name="prenom" class="register-input">
+                    <input type="text" placeholder="Prénom" name="prenom" class="register-input" value="<?= $user['prenom']?>">
                 </div>
                 <div class="register-disp">
                     <label for="email" class="register-label">E-mail</label>
-                    <input type="email" placeholder="E-mail" name="email" class="register-input">
+                    <input type="email" placeholder="E-mail" name="email" class="register-input" value="<?= $user['email']?>">
                 </div>
                 <div class="register-disp">
                     <label for="mdp" class="register-label">Ancien mot de passe</label>
@@ -27,7 +27,7 @@ require './controllers/profil_controller.php';
                 </div>
                 <div class="register-disp">
                     <label for="mdp" class="register-label">Nouveau mot de passe</label>
-                    <input type="password" placeholder="Nouveau mot de passe" name="password" class="register-input">
+                    <input type="password" placeholder="Nouveau mot de passe" name="new-password" class="register-input">
                 </div>
                 <div class="register-disp">
                     <input type="submit" class="register-submit" value ="Modifier mes informations">
