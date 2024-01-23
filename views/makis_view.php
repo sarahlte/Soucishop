@@ -13,7 +13,7 @@ $panier = new Panier;
                     <div class="card-title"><?= $product['nom'] ?></div>
                     <div class="card-txt"><?= $product['description'] ?></div>
                     <div class="card-price">
-                        <div href="?page=sushis" class="card-link-price"><?= $product['prix vente'] ?> €</div>
+                        <div href="?page=sushis" class="card-link-price"><?= $product['prix_vente'] ?> €</div>
                         <a href="?page=addpanier" class="card-link-price">ajouter au panier -></a>
                         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
                             <form action="?page=modify" method="post">
