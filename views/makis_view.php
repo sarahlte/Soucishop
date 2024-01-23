@@ -14,7 +14,7 @@ $panier = new Panier;
                     <div class="card-txt"><?= $product['description'] ?></div>
                     <div class="card-price">
                         <div href="?page=sushis" class="card-link-price"><?= $product['prix_vente'] ?> €</div>
-                        <a href="?page=addpanier" class="card-link-price">ajouter au panier -></a>
+                        <button value="<?= $product['id']?>" class="card-link-price">ajouter au panier -></a>
                         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
                             <form action="?page=modify" method="post">
                                 <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
