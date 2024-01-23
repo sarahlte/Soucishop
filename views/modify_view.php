@@ -55,5 +55,4 @@ require "./controllers/modify_controller.php";?>
     <?php }}else{?>
         <div>Error : Invalid token</div>
     <?php }}?>
-
 </div>
