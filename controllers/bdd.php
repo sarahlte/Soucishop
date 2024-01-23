@@ -2,11 +2,11 @@
 
 $system_info = php_uname();
 if (strpos($system_info, 'Windows') !== false) {
-    $dsn = 'mysql:host='.SERVER.';dbname='.PORT.';charset=utf8';
+    $dsn = 'mysql:host='.SERVER.';dbname='.DATABASE.';charset=utf8';
     $username = USER;
     $password = PASSWORDW;
 } else {
-    $dsn = 'mysql:host='.SERVER.';dbname='.PORT.';charset=utf8;port=8889';
+    $dsn = 'mysql:host='.SERVER.';dbname='.DATABASE.';charset=utf8;port='.PORT;
     $username = USER;
     $password = PASSWORDM;
 }

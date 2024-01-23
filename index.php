@@ -1,7 +1,7 @@
 <?php
 session_start ();
 require 'conf/conf.php';
-require 'require/bdd.php';
+require 'controllers/bdd.php';
 
 
 if (!isset($_SESSION['token'])) {
