@@ -27,12 +27,16 @@ if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
             ]);
         } elseif($_POST['type'] == 'produit' && isset($_POST['name']) && isset($_POST['price'])){
             $type = $_POST['type'];
-            $img = isset($_POST['img']) && in_array($extension_upload,$extensions_valides) ? $_FILES['img']['name'] : $item['image1'];
-            $update = $bdd->prepare("UPDATE $type SET nom = :name, prix = :price, img1 = :img WHERE id = :id");
+            $img1 = isset($_POST['img1']) && in_array($extension_upload,$extensions_valides) ? $_FILES['img']['name'] : $item['image1'];
+            $img2 = isset($_POST['img2']) && in_array($extension_upload,$extensions_valides) ? $_FILES['img']['name'] : $item['image2'];
+            $img3 = isset($_POST['img3']) && in_array($extension_upload,$extensions_valides) ? $_FILES['img']['name'] : $item['image3'];
+            $update = $bdd->prepare("UPDATE $type SET nom = :name, prix = :price, image1 = :img1, image2 = :img2, image3 = :img3 WHERE id = :id");
             $update->execute([
                 'name'=>$_POST['name'],
                 'price'=>$_POST['price'],
-                'img'=>$img,
+                'img1'=>$img1,
+                'img2'=>$img2,
+                'img3'=>$img3,
                 'id'=>$_POST['id']
             ]);
         }

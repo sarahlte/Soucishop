@@ -33,7 +33,9 @@ require "./controllers/modify_controller.php";?>
                 <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                 <input type="hidden" name="type" value="<?= $_POST['type']?>">
                 <input type="hidden" name='id' value="<?= $item['id']?>">
-                <input name="img" type='file'>
+                <input name="img1" type='file'>
+                <input name="img2" type='file'>
+                <input name="img3" type='file'>
                 <input name="name" value="<?= $item['nom']?>">
                 <?php $menus_produits = $bdd->prepare("SELECT * FROM menu_produit WHERE menu_id = :id");
                     $menus_produits->execute([
