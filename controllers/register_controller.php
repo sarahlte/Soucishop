@@ -3,10 +3,10 @@
 require 'bdd.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT );
+    $nom = htmlspecialchars($_POST['nom']);
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $email = htmlspecialchars($_POST['email']);
+    $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT );
     
 
     $stmt = $bdd->prepare("INSERT INTO utilisateur (nom, prenom, email, password) VALUES (?, ?, ?, ?)");

@@ -13,7 +13,7 @@ class Panier{
 if(isset($_POST['id'])){
     $products = $bdd->prepare("SELECT * from produit WHERE $id = :id");
     $products->execute([
-        'id'=>$_POST['id']
+        'id'=>htmlspecialchars($_POST['id'])
     ]);
 }
 

@@ -3,9 +3,10 @@
 require 'bdd.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = htmlspecialchars($_POST['email']);
     $query = "SELECT * FROM utilisateur WHERE email = :email";
     $stmt = $bdd->prepare($query);
-    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam(':email', $email);
     $stmt->execute();
     
     $user = $stmt->fetch();

@@ -4,10 +4,10 @@ $errors = [];
 $errorMessage = '';
 
 if (!empty($_POST)) {
-   $name = $_POST['nom'];
-   $firstname = $_POST['prenom'];
-   $email = $_POST['email'];
-   $message = $_POST['message'];
+   $name = htmlspecialchars($_POST['nom']);
+   $firstname = htmlspecialchars($_POST['prenom']);
+   $email = htmlspecialchars($_POST['email']);
+   $message = htmlspecialchars($_POST['message']);
 
     if (empty($name)) {
        $errors[] = 'Veuillez renseigner votre nom.';

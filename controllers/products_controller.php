@@ -21,7 +21,7 @@ if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
         $type = $_POST['type'];
         $req = $bdd->prepare("DELETE FROM $type WHERE id = :id");
         $req->execute([
-            'id'=>$_POST['delete']
+            'id'=>htmlspecialchars($_POST['delete'])
         ]);
     }
 }
