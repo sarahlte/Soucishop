@@ -56,6 +56,11 @@
         Copyright© 2024
       </div>
     </footer>
+    <?php
+    if(ENVIRONMENT === 'developpement'){
+      var_dump($_SESSION);
+    }
+    ?>
     <?php 
     if(!empty ($_SESSION['status'])){ ?>
       <script>
@@ -65,8 +70,5 @@
   unset ($_SESSION['status']);
   unset ($_SESSION['message']);
    } ?>
-  <?php if (ENVIRONMENT === 'development') { 
-    include './include/debug.php';
-  }?>
 </body>
 </html>
