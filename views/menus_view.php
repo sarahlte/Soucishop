@@ -5,6 +5,10 @@ require './controllers/products_controller.php';
 
 <div>
     <div class="container hp-card-contain">
+        <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
+            $_SESSION['type']='menu'?>
+            <a href="?page=add">Ajouter</a>
+        <?php }?>
         <?php foreach ($menus as $menu) : ?>
             <div class="hp-card">
                 <div class="button-display">

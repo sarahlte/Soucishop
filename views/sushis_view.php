@@ -5,6 +5,10 @@ require './controllers/basket_controller.php';
 
 <div>
     <ul><div class="container hp-card-contain">
+        <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
+            $_SESSION['type']='menu'?>
+            <a href="?page=add">Ajouter</a>
+        <?php }?>
         <?php foreach ($products as $product) : ?>
             <div class="hp-card">
                 <div class="hp-img"><img src="./assets/<?= $product['img1']?>" class="hp-button-img"></div>
