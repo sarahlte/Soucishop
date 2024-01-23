@@ -44,6 +44,18 @@ require './controllers/products_controller.php';
                     <div class="card-price">
                         <div class="card-link-price"><?= $price ?> €</div>
                         <a href="?page=sushis" class="card-link-price">ajouter au panier -></a>
+                        <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
+                            <form action="?page=modify" method="post">
+                                <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
+                                <input type="hidden" name="type" value="menu"/>
+                                <button type="submit" name="id" value="<?= $menu['id']?>">Modifier</button>
+                            </form>
+                            <form  method="post">
+                                <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
+                                <input type="hidden" name="type" value="menu"/>
+                                <button type="submit" name="delete" value="<?= $menu['id']?>">Supprimer</button>
+                            </form>
+                        <?php }?>
                     </div>
                 </div>
             </div>

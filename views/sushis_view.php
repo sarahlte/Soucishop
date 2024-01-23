@@ -13,6 +13,16 @@ require './controllers/products_controller.php';
                     <div class="card-price">
                         <div class="card-link-price"><?= $product['prix vente'] ?> €</div>
                         <a href="?page=sushis" class="card-link-price">ajouter au panier -></a>
+                        <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
+                            <form action="?page=modify" method="post">
+                                <input type="hidden" name="type" value="produit"/>
+                                <button type="submit" name="id" value="<?= $product['id']?>">Modifier</button>
+                            </form>
+                            <form  method="post">
+                                <input type="hidden" name="type" value="produit"/>
+                                <button type="submit" name="delete" value="<?= $product['id']?>">Supprimer</button>
+                            </form>
+                        <?php }?>
                     </div>
                     <hr>
                     <div><?php 
