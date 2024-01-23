@@ -19,6 +19,7 @@ require './controllers/products_controller.php';
                                 <button type="submit" name="id" value="<?= $product['id']?>">Modifier</button>
                             </form>
                             <form  method="post">
+                                <input type="hidden" name="token" value="<?=$_SESSION['token']?>" />
                                 <input type="hidden" name="type" value="produit"/>
                                 <button type="submit" name="delete" value="<?= $product['id']?>">Supprimer</button>
                             </form>
