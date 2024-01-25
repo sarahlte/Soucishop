@@ -208,7 +208,7 @@ align-items: center;
 
 
   .footer{
-    position:absolute;
+    position:fixed;
     left: 0;
     bottom:0;
     display: flex;
@@ -353,6 +353,7 @@ align-items: center;
     background-color: var(--bg3);
     border: 1px solid var(--mtransp1);
     transition: 0.6s;
+    margin-bottom: 25px;
   }
 
   .hp-card:hover{
@@ -626,6 +627,25 @@ table tr:last-child {
   flex-direction: row;
   align-items: center;
   gap: 10px;
+}
+
+
+
+/* listes */
+
+
+ul{
+  list-style-type: none;
+  margin: 25px 0;
+}
+
+.checkbox{
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: none;
+  border: 1px solid var(--bg3);
 }
 
 
