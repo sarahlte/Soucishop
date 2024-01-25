@@ -1,6 +1,6 @@
 <?php 
 require './controllers/products_controller.php';
-require './controllers/basket_controller.php';
+
 ?>
 
 <div>
@@ -14,7 +14,12 @@ require './controllers/basket_controller.php';
                     <div class="card-txt"><?= $product['description'] ?></div>
                     <div class="card-price">
                         <div class="card-link-price"><?= $product['prix_vente'] ?> €</div>
-                        <button value="<?= $product['id']?>" class="card-link-price">ajouter au panier -></button>
+                        <form method='post'>
+                            <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
+                            <input type="hidden" name="type" value="produit"/>
+                            <input type="hidden" name="object"/>
+                            <button type='submit' name='add' value="<?= $product['id']?>" class="card-link-price">ajouter au panier -></button>
+                        </form>
                         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
                             <form action="?page=modify" method="post">
                                 <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>

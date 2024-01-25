@@ -1,26 +1,26 @@
 <?php 
-Class Menu{
-    private $id = false;
+/* Class Menu{
+    private $id;
     private $nom;
     private $prix;
     private $image1;
     private $image2;
     private $image3;
-    public function hydrate(array $props){
-        if (is_array($props) && count($props)) {
-            foreach ($props as $key => $value) {
-                // On récupère le nom du setter correspondant à l'attribut
-                $method = 'set'.ucfirst($key);
-                // Si le setter correspondant existe.
-                if (method_exists($this, $method)) {
-                    // On appelle le setter
-                    $this->$method($value);
-                    }
-            }
-        }
-    }
-    public function __construct($props = array()){
-        $this->hydrate($props);
+    private $bdd;
+
+    public function __construct($id, $bdd){
+        $this->setId($id);
+        $this->setBdd($bdd);
+        $req = $bdd->prepare("SELECT * FROM menu WHERE id = :id");
+        $req->execute([
+            'id'=>$id
+        ]);
+        $menu = $req->fetch();
+        $this->setNom($menu['nom']);
+        $this->setPrix($menu['prix']);
+        $this->setImage1($menu['image1']);
+        $this->setImage2($menu['image2']);
+        $this->setImage3($menu['image3']);
     }
     public function setId($id){
         $this->id = $id;
@@ -58,31 +58,33 @@ Class Menu{
     public function getImage3(){
         return $this->image3;
     }
-}
+    public function setBdd($bdd){
+        $this->bdd=$bdd;
+    }
+    public function getBdd(){
+        return $this->bdd;
+    }
+} */
 
-Class Produit{
-    private $id = false;
+/* Class Produit{
+    private $id;
     private $nom;
     private $prix_achat;
     private $prix_vente;
     private $img1;
-    private $img2;
-    private $img3;
-    public function hydrate(array $props){
-        if (is_array($props) && count($props)) {
-            foreach ($props as $key => $value) {
-                // On récupère le nom du setter correspondant à l'attribut
-                $method = 'set'.ucfirst($key);
-                // Si le setter correspondant existe.
-                if (method_exists($this, $method)) {
-                    // On appelle le setter
-                    $this->$method($value);
-                    }
-            }
-        }
-    }
-    public function __construct($props = array()){
-        $this->hydrate($props);
+    private $bdd;
+    public function __construct($id, $bdd){
+        $this->setId($id);
+        $this->setBdd($bdd);
+        $req = $this->bdd->prepare("SELECT * FROM produit WHERE id = :id");
+        $req->execute([
+            'id'=>$id
+        ]);
+        $produit = $req->fetch();
+        $this->setNom($produit['nom']);
+        $this->setPrix_vente($produit['prix_vente']);
+        $this->setPrix_achat($produit['prix_achat']);
+        $this->setImg1($produit['img1']);
     }
     public function setId($id){
         $this->id = $id;
@@ -114,9 +116,15 @@ Class Produit{
     public function getImg1(){
         return $this->img1;
     }
-}
+    public function setBdd($bdd){
+        $this->bdd=$bdd;
+    }
+    public function getBdd(){
+        return $this->bdd;
+    }
+} */
 
-Class AlimentProduit{
+/* Class AlimentProduit{
     private $produit_id;
     private $aliment_id;
     public function hydrate(array $props){
@@ -148,8 +156,8 @@ Class AlimentProduit{
         return $this->produit_id;
     }
 }
-
-Class MenuProduit{
+ */
+/* Class MenuProduit{
     private $produit_id;
     private $menu_id;
     public function hydrate(array $props){
@@ -180,9 +188,9 @@ Class MenuProduit{
     public function getProduit_id(){
         return $this->produit_id;
     }
-}
+} */
 
-Class Commande{
+/* Class Commande{
     private $id;
     private $reference;
     private $date;
@@ -283,4 +291,30 @@ Class Commande{
     public function getComplement_d_adresse($cda){
         return $this->complement_d_adresse = $cda;
     }
+} */
+
+Class Panier{
+    private $userId;
+    private static $total;
+    private const LIVRAISON = 5;
+    private $bdr;
+    private $nbItem;
+    private array $produits = [];
+
+    public function __construct($userId){
+        $this->userId = $userId;
+    }
+    public function addPanier($produit){
+        $this->produits[] =  $produit;
+    }
+    public function setNbItem(){
+        $this->nbItem = count($this->produits);
+    }
+    public function getNbItem(){
+        return $this->nbItem;
+    }
+    public function getProduits(){
+        return $this->produits;
+    }
+
 }

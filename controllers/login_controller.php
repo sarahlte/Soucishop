@@ -1,6 +1,7 @@
 <?php
 
 require 'bdd.php';
+require 'basket_controller.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = htmlspecialchars($_POST['email']);
@@ -17,9 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['nom'] = $user['nom'];
         $_SESSION['prenom'] = $user['prenom'];
         $_SESSION['role'] = $user['role'];
+        $panier = new Panier($user['id']);
+        $_SESSION['panier']= serialize($panier);
         $_SESSION['status'] = 'success';
         $_SESSION['message'] = 'Vous vous êtes bien connecté.e !';
         header("Location: ?page=homepage");
+
+        
         exit();
     } else {
         echo "Email ou mot de passe invalide";
