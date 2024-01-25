@@ -1,6 +1,5 @@
 <?php 
 require 'bdd.php';
-require 'class.php';
 
 if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
     $products = $bdd->prepare("SELECT * FROM produit");
@@ -28,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['token']) && $_POST['tok
             $id= $bdd->lastInsertId();
             foreach($products as $product){
                 if(isset($_POST[$product['nom']]))
-                $menu_produit = $bdd->prepare("INSERT INTO menu_produit ('menu_produit', 'produit_id') VALUES (:menu_id, :produit_id)");
+                $menu_produit = $bdd->prepare("INSERT INTO menu_produit (menu_produit, produit_id) VALUES (:menu_id, :produit_id)");
                 $menu_produit->execute([
                     'menu_id'=>$id,
                     'produit_id'=>$_POST[$product['nom']]
