@@ -293,6 +293,7 @@ align-items: center;
     padding: 10px;
     border-radius: 5px;
     transition: 0.3s;
+    cursor: pointer;
   }
 
   .register-submit:hover{
@@ -397,6 +398,20 @@ align-items: center;
     background-color: var(--mainc2);
     padding-left: 15px;
     transition: 0.3s;
+  }
+
+  .card-link-price-a{
+    margin-top: 10px;
+    display: flex;
+    background-color: var(--mainc1);
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+    transition: 0.3s;
+    border: 0;
+    font-family: inter;
+    color: var(--txt1);
+    cursor: pointer;
   }
 
   .card-link-price{
