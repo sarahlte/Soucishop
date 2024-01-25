@@ -6,7 +6,7 @@ require './controllers/basket_controller.php';
 <div>
     <ul><div class="container hp-card-contain">
         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
-            $_SESSION['type']='menu'?>
+            $_SESSION['type']='produit'?>
             <a href="?page=add">Ajouter</a>
         <?php }?>
         <?php foreach ($products as $product) : ?>
