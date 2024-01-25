@@ -36,5 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    if ($updateStatement->execute()) {
+        $_SESSION['status'] = 'success';
+        $_SESSION['message'] = 'Votre profil a bien été modifié.';
+        header("Location: ?page=connexion");
+        exit();
+    }
 }
-

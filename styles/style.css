@@ -314,6 +314,30 @@ align-items: center;
   /* HOMEPAGE */
 
 
+  .button-up{
+    margin: 20px 0 20px 0; 
+    width: 120px;
+    transition: 0.3s;
+    display: flex;
+    background-color: var(--mainc1);
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .button-up:hover{
+    background-color: var(--mainc2);
+    transition: 0.3s;
+  }
+
+  .card-contain{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
   .hp-card-contain{
     display: flex;
     flex-direction: row;
@@ -542,4 +566,45 @@ table tr {
 
 table tr:last-child {
   border-bottom: none;
+}
+
+
+/* MODIFIER PRODUIT / MENU */
+
+.modify-disp{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px auto;
+}
+
+.modify-display{
+  padding: 20px;
+  margin: auto;
+}
+
+.modify-input{
+  border: 1px solid var(--txt1);
+  background: none;
+  padding: 15px;
+  color: var(--txt1);
+  width: 800px;
+  border-radius: 5px;
+}
+
+.modify-submit{
+  background-color: var(--mainc1);
+  border: 0;
+  color: var(--txt1);
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.3s;
+  margin: 20px 0;
+}
+
+.inp-disp{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }

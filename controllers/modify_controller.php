@@ -25,6 +25,12 @@ if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
                 'img'=>$img,
                 'id'=>htmlspecialchars($_POST['id'])
             ]);
+            if ($update->execute()) {
+                $_SESSION['status'] = 'success';
+                $_SESSION['message'] = 'Votre produit a bien été modifié.';
+                header("Location: ?page=homepage");
+                exit();
+            }
         } elseif($_POST['type'] == 'produit' && isset($_POST['name']) && isset($_POST['price'])){
             $type = $_POST['type'];
             $img1 = isset($_POST['img1']) && in_array($extension_upload,$extensions_valides) ? $_FILES['img']['name'] : $item['image1'];
@@ -39,6 +45,12 @@ if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
                 'img3'=>$img3,
                 'id'=>htmlspecialchars($_POST['id'])
             ]);
+            if ($update->execute()) {
+                $_SESSION['status'] = 'success';
+                $_SESSION['message'] = 'Votre menu a bien été modifié.';
+                header("Location: ?page=homepage");
+                exit();
+            }
         }
     }
 }
