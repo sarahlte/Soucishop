@@ -31,14 +31,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['token']) && $_POST['tok
             $id= $bdd->lastInsertId();
             foreach($aliments as $aliment){
                 if(isset($_POST[$aliment['nom']]))
-                $menu_produit = $bdd->prepare("INSERT INTO aliment_produit (aliment_produit, produit_id) VALUES (:aliment_id, :produit_id)");
-                $menu_produit->execute([
-                    'menu_id'=>$id,
-                    'produit_id'=>$_POST[$product['nom']]
+                $aliment_produit = $bdd->prepare("INSERT INTO aliment_produit (aliment_produit, produit_id) VALUES (:aliment_id, :produit_id)");
+                $aliment_produit->execute([
+                    'aliment_id'=>$id,
+                    'produit_id'=>$_POST[$aliment['nom']]
                 ]);
             }
             $_SESSION['status'] = 'success';
             $_SESSION['message'] = 'Produit ajouté !';
+            header("Location: ?page=connexion");
         } else {
             echo 'veuillez selectionner des aliments';
         } 

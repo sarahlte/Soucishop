@@ -1,7 +1,7 @@
 <?php 
 require './controllers/add_controller.php';
+var_dump($_SESSION['type'])
 ?>
-
 <div class="display-log">
     <?php if(isset($_SESSION['type']) && $_SESSION['type'] =='produit'){?>
         <form method="post" class="register-display">
@@ -38,21 +38,29 @@ require './controllers/add_controller.php';
         <form method="post" class="register-display">
             <input type="hidden" name='type' value='<?= $_SESSION['type']?>'>
             <input type="hidden" name='token' value='<?= $_SESSION['token']?>'>
-            <label for="nom">Nom du menu</label>
-            <input type="text" name='nom'>
-            <label for="prix">Prix du menu</label>
-            <input type="text" name='prix'>
-            <label for="img1"></label>
-            <input type="file" name='img1'>
-            <label for="img2"></label>
-            <input type="file" name='img2'>
-            <label for="img3"></label>
-            <input type="file" name='img3'>
-            <?php foreach($products as $product):?>
-                <label for="<?= $product['id']?>"><?= $product['nom']?></label>
-                <input name="<?= $product['id']?>" type="checkbox" value="<?= $product['id'];?>">
-            <?php endforeach; ?>
-            <button type='submit'>Ajouter</button>
+            <div class="register-disp">
+                <label for="nom">Nom du menu</label>
+                <input type="text" name='nom' class="register-input">
+            </div>
+            <div class="register-disp">
+                <label for="prix">Prix du menu</label>
+                <input type="text" name='prix' class="register-input">
+            </div>
+            <div class="register-disp">
+                <label for="img1"></label>
+                <input type="file" name='img1'>
+                <label for="img2"></label>
+                <input type="file" name='img2'>
+                <label for="img3"></label>
+                <input type="file" name='img3'>
+            </div>
+            <ul>
+                <?php foreach($products as $product):?>
+                    <li><input name="<?= $product['id']?>" type="checkbox" value="<?= $product['id'];?>" class="checkbox">
+                    <label for="<?= $product['id']?>"><?= $product['nom']?></label></li>
+                <?php endforeach; ?>
+                </ul>
+            <button type='submit' class="register-submit">Ajouter</button>
         </form>
     <?php } else { header("Location: ?page=homepage"); }?>
 </div>

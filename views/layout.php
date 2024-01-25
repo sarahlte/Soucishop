@@ -45,11 +45,11 @@
           <a class="panier" href="#">panier</a>
           <?php 
           if (isset($_SESSION['panier'])){?>
-          <?php include './controllers/class.php';
-          $panier = unserialize($_SESSION['panier']); 
-          var_dump($panier->getNbItem());?>
-          <div class="notif-panier"><?= $panier->getNbItem();?></div>
-          <?php } else {?>
+          <?php //include './controllers/class.php';
+          //$panier = unserialize($_SESSION['panier']); 
+          //var_dump($panier->getNbItem());?>
+          
+          <?php //} else {?>
           <div class="notif-panier">0</div>
           <?php }?>
           <img class="logo" src="./assets/logomini.png">
