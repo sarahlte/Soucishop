@@ -1,6 +1,5 @@
 <?php
 include './controllers/basket_controller.php';
-include './controllers/addbasket_controller.php';
 ?>
 
 <div class="display-log">

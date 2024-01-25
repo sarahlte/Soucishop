@@ -1,7 +1,8 @@
 <?php
 require 'bdd.php';
+require 'class.php';
 
-class Panier{
+/* class Panier{
 
     public function __construct() {
         if(!isset($_SESSION['panier'])){
@@ -9,7 +10,7 @@ class Panier{
         }
     }
 }
-
+ */
 if(isset($_POST['id'])){
     $products = $bdd->prepare("SELECT * from produit WHERE $id = :id");
     $products->execute([

@@ -1,5 +1,6 @@
 <?php
 require 'bdd.php';
+//require 'basket_controller.php';
 
 if ($_GET['page'] == 'makis'){
     $products = $bdd->prepare("SELECT * FROM produit WHERE categorie = :categorie");
@@ -25,5 +26,22 @@ if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
         ]);
     }
 }
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add']) && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && isset($_SESSION['panier'])){
+    if($_POST['type']=='produit'){
+        $panier = unserialize($_SESSION['panier']);
+        $panier->addPanier(['id'=>$_POST['add'], 'type'=>$_POST['type']]);
+        var_dump($panier);
+        $_SESSION['panier'] = serialize($panier);
+        
+    } elseif ($_POST['type']=='menu'){
+        $panier = unserialize($_SESSION['panier']);
+        $panier->addPanier(['id'=>$_POST['add'], 'type'=>$_POST['type']]);
+        var_dump($panier);
+        $_SESSION['panier'] = serialize($panier);
+    }
+}
+
+
 
 
