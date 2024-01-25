@@ -4,11 +4,13 @@ require './controllers/products_controller.php';
 <script src="./script/caroussel.js"></script>
 
 <div>
-    <div class="container hp-card-contain">
-        <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
+<div class="container">
+<?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
             $_SESSION['type']='menu'?>
-            <a href="?page=add">Ajouter</a>
+            <a href="?page=add" class="button-up">Ajouter un menu -></a>
         <?php }?>
+    </div>
+    <div class="container card-contain">
         <?php foreach ($menus as $menu) : ?>
             <div class="hp-card">
                 <div class="button-display">
@@ -52,12 +54,12 @@ require './controllers/products_controller.php';
                             <form action="?page=modify" method="post">
                                 <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
                                 <input type="hidden" name="type" value="menu"/>
-                                <button type="submit" name="id" value="<?= $menu['id']?>">Modifier</button>
+                                <button type="submit" name="id" class="card-link-price" value="<?= $menu['id']?>">Modifier</button>
                             </form>
                             <form  method="post">
                                 <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
                                 <input type="hidden" name="type" value="menu"/>
-                                <button type="submit" name="delete" value="<?= $menu['id']?>">Supprimer</button>
+                                <button type="submit" name="delete" class="card-link-price" value="<?= $menu['id']?>">X</button>
                             </form>
                         <?php }?>
                     </div>
