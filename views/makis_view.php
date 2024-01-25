@@ -5,13 +5,7 @@ $panier = new Panier;
 ?>
 
 <div>
-    <div class="container">
-        <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
-            $_SESSION['type']='produit'?>
-            <a href="?page=add" class="button-up">Ajouter un produit -></a>
-        <?php }?>
-    </div>
-    <div class="container card-contain">
+    <div class="container hp-card-contain">
         <?php foreach ($products as $product) : ?>
             <div class="hp-card">
                 <div class="hp-img"><img src="./assets/<?= $product['img1']?>" class="hp-button-img"></div>
@@ -30,7 +24,7 @@ $panier = new Panier;
                             <form  method="post">
                                 <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
                                 <input type="hidden" name="type" value="produit"/>
-                                <button class="card-link-price" type="submit" name="delete" value="<?= $product['id']?>">x</button>
+                                <button class="card-link-price" type="submit" name="delete" value="<?= $product['id']?>">X</button>
                             </form>
                         <?php }?>
                     </div>
@@ -53,5 +47,9 @@ $panier = new Panier;
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
+            $_SESSION['type']='produit'?>
+            <a href="?page=add" class="button-up">Ajouter un produit -></a>
+        <?php }?>
     </div>
 </div>

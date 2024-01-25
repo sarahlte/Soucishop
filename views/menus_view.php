@@ -4,13 +4,7 @@ require './controllers/products_controller.php';
 <script src="./script/caroussel.js"></script>
 
 <div>
-<div class="container">
-<?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
-            $_SESSION['type']='menu'?>
-            <a href="?page=add" class="button-up">Ajouter un menu -></a>
-        <?php }?>
-    </div>
-    <div class="container card-contain">
+    <div class="container hp-card-contain">
         <?php foreach ($menus as $menu) : ?>
             <div class="hp-card">
                 <div class="button-display">
@@ -66,5 +60,9 @@ require './controllers/products_controller.php';
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
+            $_SESSION['type']='menu'?>
+            <a href="?page=add" class="button-up">Ajouter un menu -></a>
+        <?php }?>
     </div>
 </div>
