@@ -208,10 +208,11 @@ align-items: center;
 
 
   .footer{
-    position: fixed;
-    width: 100%;
+    position:absolute;
     left: 0;
-    bottom: 0;
+    bottom:0;
+    display: flex;
+    align-items: center;
     padding: 5px 25px;
     background-color: var(--bg3);
     font-size: 10px;
@@ -341,7 +342,7 @@ align-items: center;
   .hp-card-contain{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     margin: 100px 0;
   }
@@ -549,6 +550,9 @@ align-items: center;
   padding: 5px 25px;
   border-radius: 2px;
   line-height: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
 }
 
 table {
@@ -607,4 +611,22 @@ table tr:last-child {
   flex-direction: row;
   align-items: center;
   gap: 10px;
+}
+
+
+
+
+/* RESPONSIVE */
+
+
+
+@media screen and (max-width: 767px){
+  .hp-card-contain{
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hp-card{
+    width: 100%;
+  }
 }
