@@ -43,15 +43,8 @@
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
           <a class="panier" href="#">panier</a>
-          <?php 
-          if (isset($_SESSION['panier'])){?>
-          <?php include './controllers/class.php';
-          $panier = unserialize($_SESSION['panier']); 
-          var_dump($panier->getNbItem());?>
-          <div class="notif-panier"><?= $panier->getNbItem();?></div>
-          <?php } else {?>
-          <div class="notif-panier">0</div>
-          <?php }?>
+          <div class="notif-panier" id='nb-panier'></div>
+          <script src="basket.js"></script>
           <img class="logo" src="./assets/logomini.png">
         </div>
       </div>
