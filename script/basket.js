@@ -4,26 +4,30 @@ async function fetchText() {
   let data = await response.json();
   console.log(data);
 }
-function effectuerAppelAjax(event) {
-  event.preventDefault();
+
+let boutonAppelAjax = document.getElementById('nb-panier');
 
 
-  const divReponse = document.getElementById('reponseAjax');
+if (boutonAppelAjax != null) {
+    boutonAppelAjax.onclick = effectuerAppelAjax;
+}
+
+
+function effectuerAppelAjax() {
+
+  const divReponse = document.getElementById('nb-panier');
 
   if (divReponse != null) { 
 
-      fetch('traitement-bidon.php?nom=toto')
+      fetch('./controllers/basket_ajax.php')
       .then((response) => {
           if (!response.ok) {
               throw new Error("Problème - code d'état HTTP : " + response.status);
           }
           return response.json();
       }).then((body) => {
-          divReponse.innerHTML = body.salutation;
-      }).catch((e) => {
-          console.log(e.toString());
-          divReponse.innerHTML = "Un problème nous empêche de compléter le traitement demandé.";
-      });
+          divReponse.innerHTML = body;
+      })
   }
   else {
       console.log("Erreur : la division reponseAjax n'existe pas.");

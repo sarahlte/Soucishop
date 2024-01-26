@@ -298,8 +298,8 @@ Class Panier{
     private static $total;
     private const LIVRAISON = 5;
     private $bdr;
-    private $nbItem;
-    private $totalItem = 0;
+    public $nbItem;
+    private int $totalItem = 0;
     private array $produits = [];
 
     public function __construct($userId){
