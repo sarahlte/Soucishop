@@ -1,6 +1,7 @@
 <?php 
 require './controllers/products_controller.php';
 ?>
+<script serc="./script/delete.js"></script>
 
 <div>
     <div class="container hp-card-contain">
@@ -26,7 +27,7 @@ require './controllers/products_controller.php';
                             <form  method="post">
                                 <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
                                 <input type="hidden" name="type" value="produit"/>
-                                <button class="card-link-price" type="submit" name="delete" value="<?= $product['id']?>">X</button>
+                                <button onclick="toDelete()" class="card-link-price" type="submit" name="delete" value="<?= $product['id']?>">X</button>
                             </form>
                         <?php }?>
                     </div>
