@@ -1,6 +1,5 @@
 <?php 
 require './controllers/add_controller.php';
-var_dump($_SESSION['type'])
 ?>
 <div class="display-log">
     <?php if(isset($_SESSION['type']) && $_SESSION['type'] =='produit'){?>
@@ -9,7 +8,10 @@ var_dump($_SESSION['type'])
             <input type="hidden" name='token' value='<?= $_SESSION['token']?>'>
             <div class="register-disp">
                 <label for="nom">Catégorie du produit</label>
-                <input type="text" name='categorie' class="register-input">
+                <select type="select" name='categorie' class="register-input">
+                    <option valeur="sushi">Sushi</option>
+                    <option valeur="maki">Maki</option>
+                </select>
             </div>
             <div class="register-disp">
                 <label for="nom">Nom du produit</label>
