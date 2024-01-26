@@ -7,7 +7,7 @@ require 'controllers/bdd.php';
 if (!isset($_SESSION['token'])) {
     $_SESSION['token'] = md5(uniqid(mt_rand(), true));
 }
-$availableRoutes = ['homepage', 'sushis', 'makis', 'user', 'admin', 'menus', 'basket', 'register', 'login', 'logout', 'contact', 'profil', 'modify', 'add', 'historic'];
+$availableRoutes = ['homepage', 'sushis', 'makis', 'user', 'admin', 'menus', 'basket', 'register', 'login', 'logout', 'contact', 'profil', 'modify', 'add', 'historic', 'order'];
 
 $route = 'homepage';
 
