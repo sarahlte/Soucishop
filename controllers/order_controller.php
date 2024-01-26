@@ -2,5 +2,8 @@
 require 'bdd.php';
 
 if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
-    $req = $bdd->prepare("")
+    $reqs = $bdd->prepare("SELECT * FROM commande");
+    
+
+
 }
