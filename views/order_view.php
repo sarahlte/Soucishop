@@ -4,7 +4,6 @@ require './controllers/order_controller.php';
 
 <div>
     <table class="comm-table">
-        
         <tr class="comm-head">
             <td class="comm-tit">
                 Référence
@@ -25,29 +24,36 @@ require './controllers/order_controller.php';
                 Adresse
             </td>
             <td class="comm-tit">
-                Reçu
-            </td>
-            <td class="comm-tit">
                 Produit.s
             </td>
         </tr>
         <?php foreach($reqs as $req):?>
         <tr class="comm-line">
             <td class="comm-ele">
-                produit
+                <?= $req['id']?>
             </td>
             <td class="comm-ele">
-                prix unitaire
+                <?= $req['date']?>
             </td>
             <td class="comm-ele">
-                quantité
+                <?= $req['prix_total']?>
             </td>
             <td class="comm-ele">
-                prix total
+                <?= $req['livraison']?>
             </td>
             <td class="comm-ele">
-                modifier
+                <?= $req['recu']?>
+            </td>
+            <td class="comm-ele">
+                <?= $req['adresse']?>
+                <?= $req['code_postal']?>
+                <?= $req['ville']?>
+                <?= $req['complement_d_adresse']?>
+            </td>
+            <td class="comm-ele">
+                <?= $req['produits']?>
             </td>
         </tr>
+        <?php endforeach;?>
     </table>
 </div>
