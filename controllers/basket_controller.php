@@ -26,28 +26,31 @@ if(isset($_POST['id'])){
     ]);
 }
 
-// class Produit{
-//     protected $nom;
-//     protected $prix = 0;
-//     protected $quantite = 0;
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token']) {
 
-//     public function __construct($nom, $prix) {
-//         $this->nom = $nom;
-//         $this->prix = $prix;
-//         $this->setQuantite($this->getQuantite()+1);
-//     }
+    if(isset($_POST['livraison'])){
+        $livraison = 0;
+    } else{
+        $livraison = 1;
+    }
 
-//     function setQuantite($ici){
-//         self::$quantite = $ici;
-//     }
+    $commande = $bdd->prepare("INSERT INTO commande (prix_total, livraison, nom, prenom, adresse, code_postal, ville, compelement_d_adresse) VALUES (:prix_total, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :compelement_d_adresse)");
 
-//     public function getNom() {
-//         return $this->nom;
-//     }
-//     public function getPrix() {
-//         return $this->prix;
-//     }
-//     public function getQuantite() {
-//         return $this->quantite;
-//     }
-// }
+    $commande->execute([
+        'prix_total'=>htmlspecialchars($_POST['commande_total']),
+        'livraison'=>htmlspecialchars($livraison),
+        'nom'=>htmlspecialchars($_POST['nom']),
+        'prenom'=>htmlspecialchars($_POST['prenom']),
+        'adresse'=>htmlspecialchars($_POST['adresse']),
+        'code_postal'=>htmlspecialchars($_POST['code_postal']),
+        'ville'=>htmlspecialchars($_POST['ville']),
+        'cadresse'=>htmlspecialchars($_POST['cadresse']),
+    ]);
+
+    // if ($stmt->execute()) {
+    //     $_SESSION['status'] = 'success';
+    //     $_SESSION['message'] = 'Votre commande a bien été passée !';
+    //     header("Location: ?page=connexion");
+    //     exit();
+    // }
+}
