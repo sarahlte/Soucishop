@@ -2,7 +2,21 @@
 require 'bdd.php';
 require 'class.php';
 
-$panier = unserialize($_SESSION('panier'));
+$panier = unserialize($_SESSION['panier']);
+
+
+$items = $panier->getProduits();
+
+
+function quantity($produit){
+    $panier = unserialize($_SESSION['panier']);
+    if(isset($_POST['moins'])){
+        $produit['nb'] -=1;
+    } elseif(isset($_POST['plus'])){
+        $panier->addProduits($produit);
+    }
+}
+
 
 if(isset($_POST['id'])){
     $products = $bdd->prepare("SELECT * from produit WHERE $id = :id");

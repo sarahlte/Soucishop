@@ -1,15 +1,20 @@
 
 const div_basket = document.getElementById('nb-item');
 
-async function item(){
+/* async function item(){
   await fetch('./controllers/basket_ajax.php')
   .then((body) => {
     body)})
   //.catch(err => console.log(err))
 }
+ */
 
 
-let response = item();
-console.log(response);
 
-
+function handleChange(checkbox) {
+  if(checkbox.checked == true){
+    document.getElementById("livraison-div").hidden = false;
+  }else{
+    document.getElementById("livraison-div").hidden = true;
+ }
+}
