@@ -80,5 +80,31 @@ include './controllers/basket_controller.php';
                 </td>
             </tr>
         </table>
+        <div class="register-display" id="livraison-infos" hidden='true'>
+            <div class="register-disp">
+                <label for="nom" class="login-label">Nom</label>
+                <input type="text" placeholder="Nom" name="nom" class="register-input">
+            </div>
+            <div class="register-disp">
+                <label for="nom" class="login-label">Prénom</label>
+                <input type="text" placeholder="Prénom" name="prenom" class="register-input">
+            </div>
+            <div class="register-disp">
+                <label for="nom" class="login-label">Adresse</label>
+                <input type="text" placeholder="Adresse" name="adresse" class="register-input">
+            </div>
+            <div class="register-disp">
+                <label for="nom" class="login-label">Code postal</label>
+                <input type="text" placeholder="Code postal" name="code_postal" class="register-input">
+            </div>
+            <div class="register-disp">
+                <label for="nom" class="login-label">Ville</label>
+                <input type="text" placeholder="Ville" name="ville" class="register-input">
+            </div>
+            <div class="register-disp">
+                <label for="nom" class="login-label">Complément d'adresse</label>
+                <input type="text" placeholder="Complément d'adresse" name="cadresse" class="register-input">
+            </div>
+        </div>
     </form>
 </div>
