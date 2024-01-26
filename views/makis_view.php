@@ -56,5 +56,5 @@ require './controllers/products_controller.php';
             <a href="?page=add" class="button-up">Ajouter un produit -></a>
         <?php }?>
     </div>
-   <script src="./script/basket.js"></script>
+   <!-- <script src="./script/basket.js"></script> -->
 </div>

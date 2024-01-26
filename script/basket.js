@@ -51,7 +51,9 @@ function updateCount(){
 function handleChange(checkbox) {
   if(checkbox.checked == true){
       document.getElementById("livraison-div").hidden= false;
+      document.getElementById("livraison-infos").hidden= false;
   }else{
       document.getElementById("livraison-div").hidden = true;
+      document.getElementById("livraison-infos").hidden = true;
  }
 }
