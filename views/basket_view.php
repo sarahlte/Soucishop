@@ -31,13 +31,22 @@ include './controllers/basket_controller.php';
                 'id'=>$id
             ]);
             $response = $req->fetch();
-            $prix_total = $response['prix_vente']*$nb;?>
+            if(isset($response['prix_vente'])){
+                $prix_total = $response['prix_vente']*$nb;
+            } elseif(isset($response['prix'])){
+                $prix_total = $response['prix']*$nb;
+            }?>
             <tr class="comm-line">
                 <td class="comm-ele">
                     <?= $response['nom']?>
                 </td>
                 <td class="comm-ele">
-                    <?= $response['prix_vente']?>0
+                    <?php if(isset($response['prix_vente'])){
+                            echo $response['prix_vente'];
+                        } elseif(isset($response['prix'])){
+                            echo $response['prix'];
+                        }
+                    ?>0
                 </td>
                 <td class="comm-ele">
                     <?= $nb ?>
@@ -73,10 +82,22 @@ include './controllers/basket_controller.php';
                     total
                 </td>
                 <td class="comm-ele">
-                <?php foreach($items as $item){ 
-                    $commande_total = 0;
-                    $commande_total += $response['prix_vente']*$nb;
-                } ?>
+                <?php $commande_total = 0;
+                foreach($items as $item){ 
+                    $id = $item['id'];
+                    $type = $item['type'];
+                    $nb = $item['nb'];
+                    $req = $bdd->prepare("SELECT * FROM $type WHERE id = :id");
+                    $req->execute([
+                        'id'=>$id
+                    ]);
+                    $response = $req->fetch();
+                    if(isset($response['prix_vente'])){
+                        $commande_total += $response['prix_vente']*$nb;
+                    } elseif(isset($response['prix'])){
+                        $commande_total += $response['prix']*$nb;
+                    }
+                } echo $commande_total;?>
                 <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
                 <input type="hidden" name="commande_total" value="<?= $commande_total ?>"/>
                 </td>
