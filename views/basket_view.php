@@ -67,13 +67,18 @@ include './controllers/basket_controller.php';
             </tr>
             <tr class="comm-line">
                 <td class="comm-ele" colspan="2">
-                <input type="checkbox" id="livraison" onchange="handleChange(this);"> Livraison à 5 €
+                <input type="checkbox" id="livraison" name="livraison" onchange="handleChange(this);"> Livraison à 5 €
                 </td>
                 <td class="comm-ele">
                     total
                 </td>
                 <td class="comm-ele">
-                    0
+                <?php foreach($items as $item){ 
+                    $commande_total = 0;
+                    $commande_total += $response['prix_vente']*$nb;
+                } ?>
+                <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
+                <input type="hidden" name="commande_total" value="<?= $commande_total ?>"/>
                 </td>
                 <td class="comm-ele modif">
                 <button class="comm-payer">payer</button>
