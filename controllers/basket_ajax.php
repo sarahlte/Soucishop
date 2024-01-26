@@ -1,8 +1,14 @@
 <?php 
 include './controllers/class.php';
+
 if (isset($_SESSION['panier'])){
     $panier = unserialize($_SESSION['panier']); 
-    echo json_encode(['nb'=>($panier->getNbItem())]);
+    //var_dump($panier);
+    $panier->setNbItem();
+    $nb_item = $panier->getNbItem();
+    echo json_encode($nb_item);
 } else {
-    echo json_encode(['nb'=>'0']);;
+    $nb_item=0;
+    echo json_encode($nb_item);
 }
+

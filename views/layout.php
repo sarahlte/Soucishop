@@ -43,8 +43,8 @@
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
           <a class="panier" href="#">panier</a>
+          <script src="./script/basket.js"></script>
           <div class="notif-panier" id='nb-panier'></div>
-          <script src="basket.js"></script>
           <img class="logo" src="./assets/logomini.png">
         </div>
       </div>

@@ -2,15 +2,8 @@
 require 'bdd.php';
 require 'class.php';
 
-/* class Panier{
+$panier = unserialize($_SESSION('panier'));
 
-    public function __construct() {
-        if(!isset($_SESSION['panier'])){
-            $_SESSION['panier'] = array();
-        }
-    }
-}
- */
 if(isset($_POST['id'])){
     $products = $bdd->prepare("SELECT * from produit WHERE $id = :id");
     $products->execute([

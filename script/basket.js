@@ -1,12 +1,15 @@
 
 const div_basket = document.getElementById('nb-item');
-fetch('basket_ajax.php').then((response) => {
-    if (!response.ok) {
-        throw new Error("Problème - code d'état HTTP : " + response.status);
-    }
-    return response.json();
-}).then((body) => {
-    div_basket.innerHTML = body.nb;
-})
+
+async function item(){
+  await fetch('./controllers/basket_ajax.php')
+  .then((body) => {
+    body)})
+  //.catch(err => console.log(err))
+}
+
+
+let response = item();
+console.log(response);
 
 

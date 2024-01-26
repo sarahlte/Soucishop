@@ -1,6 +1,6 @@
 <?php
 require 'bdd.php';
-//require 'basket_controller.php';
+require 'basket_controller.php';
 
 if ($_GET['page'] == 'makis'){
     $products = $bdd->prepare("SELECT * FROM produit WHERE categorie = :categorie");
