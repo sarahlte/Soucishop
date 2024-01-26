@@ -6,6 +6,7 @@ $panier = unserialize($_SESSION['panier']);
 
 
 $items = $panier->getProduits();
+$total = $panier->getTotalItem();
 
 
 function quantity($produit){

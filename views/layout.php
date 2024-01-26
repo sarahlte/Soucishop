@@ -8,10 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400&family=Poppins:wght@100&display=swap" rel="stylesheet">
-    <script
-            src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
@@ -43,7 +40,12 @@
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
           <a class="panier" href="?page=basket">panier</a>
-          <div class="notif-panier" id="nb-panier">0</div>
+          <div class="notif-panier" id="nb-panier"><?php if(isset($_SESSION['panier'])){
+          $panier=unserialize($_SESSION['panier']);
+          echo $panier->getTotalitem();
+          }else{
+            echo '0';
+          }?></div>
           <img class="logo" src="./assets/logomini.png">
         </div>
       </div>
