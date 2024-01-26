@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['role'] = $user['role'];
         $panier = new Panier($user['id']);
         $_SESSION['panier']= serialize($panier);
+        $_SESSION['nb'] = 0;
         $_SESSION['status'] = 'success';
         $_SESSION['message'] = 'Vous vous êtes bien connecté.e !';
         header("Location: ?page=homepage");

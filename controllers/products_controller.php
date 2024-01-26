@@ -1,6 +1,6 @@
 <?php
 require 'bdd.php';
-require 'basket_controller.php';
+require 'class.php';
 
 if ($_GET['page'] == 'makis'){
     $products = $bdd->prepare("SELECT * FROM produit WHERE categorie = :categorie");
@@ -32,14 +32,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add']) && isset($_POST[
         $panier = unserialize($_SESSION['panier']);
         $panier->addPanier(['id'=>$_POST['add'], 'type'=>$_POST['type'], 'nb'=>1]);
         var_dump($panier);
+        $_SESSION['nb'] = $panier->getTotalItem();
+        var_dump($_SESSION['nb']);
         $_SESSION['panier'] = serialize($panier);
         
     } elseif ($_POST['type']=='menu'){
         $panier = unserialize($_SESSION['panier']);
         $panier->addPanier(['id'=>$_POST['add'], 'type'=>$_POST['type'], 'nb'=>1]);
         var_dump($panier);
+        $_SESSION['nb'] = $panier->getTotalItem();
         $_SESSION['panier'] = serialize($panier);
     }
+} elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add']) && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !isset($_SESSION['panier'])){
+    $_SESSION['status'] = 'error';
+    $_SESSION['message'] = 'Veuillez vous connecter pour ajouter un article au panier!';
+    header("Location: ?page=login");
+    exit();
 }
 
 

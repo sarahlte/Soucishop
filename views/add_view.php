@@ -31,7 +31,8 @@ require './controllers/add_controller.php';
             <ul>
             <?php foreach($aliments as $aliment):?>
                 <li><input name="<?= $aliment['id']?>" type="checkbox" value="<?= $aliment['id'];?>" class="checkbox">
-                <label for="<?= $aliment['id']?>"><?= $aliment['nom']?></label></li>
+                <label for="<?= $aliment['id']?>"><?= $aliment['nom']?></label>
+                <input type="text" placeholder="quantité" name="<?= $aliment['id']?>b"></li>
             <?php endforeach; ?>
             </ul>
             <button type='submit' class="register-submit">Ajouter</button>
@@ -59,7 +60,8 @@ require './controllers/add_controller.php';
             <ul>
                 <?php foreach($products as $product):?>
                     <li><input name="<?= $product['id']?>" type="checkbox" value="<?= $product['id'];?>" class="checkbox">
-                    <label for="<?= $product['id']?>"><?= $product['nom']?></label></li>
+                    <label for="<?= $product['id']?>"><?= $product['nom']?></label>
+                    <input placeholder="quantité" name="<?= $product['id']?>b"></li>
                 <?php endforeach; ?>
                 </ul>
             <button type='submit' class="register-submit">Ajouter</button>

@@ -2,6 +2,7 @@
 require 'bdd.php';
 require 'class.php';
 
+
 $panier = unserialize($_SESSION['panier']);
 
 
