@@ -40,12 +40,7 @@
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
           <a class="panier" href="?page=basket">panier</a>
-          <div class="notif-panier" id="nb-panier"><?php if(isset($_SESSION['panier'])){
-          $panier=unserialize($_SESSION['panier']);
-          echo $panier->getTotalitem();
-          }else{
-            echo '0';
-          }?></div>
+          <div class="notif-panier" id="nb-panier"></div>
           <img class="logo" src="./assets/logomini.png">
         </div>
       </div>
