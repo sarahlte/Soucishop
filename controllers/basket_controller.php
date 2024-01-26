@@ -35,6 +35,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['t
         $livraison = 1;
     }
 
+    $p_commande = '';
+    foreach($items as $item){
+        $id = $item['id'];
+        $type = $item['type'];
+        $nb = $item['nb'];
+        $req = $bdd->prepare("SELECT * FROM $type WHERE id = :id");
+        $req->execute([
+            'id'=>$id
+        ]);
+        $response = $req->fetch();
+        if(isset($response['prix_vente'])){
+            $prix_total = $response['prix_vente']*$nb;
+        } elseif(isset($response['prix'])){
+            $prix_total = $response['prix']*$nb;
+        }
+        $p_commande = $p_commande.$nb.' x '.$response['nom'].' - '.$prix_total.'€ </br>';
+    }
+    var_dump($p_commande);
+    var_dump($_POST['commande_total']);
+    var_dump($livraison);
+    var_dump($_POST['nom']);
+    var_dump($_POST['prenom']);
+    var_dump($_POST['adresse']);
+    var_dump($_POST['code_postal']);
+    var_dump($_POST['ville']);
+    var_dump($_POST['cadresse']);
     $commande = $bdd->prepare("INSERT INTO commande (prix_total, livraison, nom, prenom, adresse, code_postal, ville, compelement_d_adresse) VALUES (:prix_total, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :compelement_d_adresse)");
 
     $commande->execute([
