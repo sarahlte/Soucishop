@@ -42,9 +42,8 @@
           <a class="panier" href="?page=register">inscription</a>
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
-          <a class="panier" href="#">panier</a>
-          <script src="./script/basket.js"></script>
-          <div class="notif-panier" id='nb-panier'></div>
+          <a class="panier" href="?page=basket">panier</a>
+          <div class="notif-panier" id="nb-panier">0</div>
           <img class="logo" src="./assets/logomini.png">
         </div>
       </div>

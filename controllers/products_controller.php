@@ -31,13 +31,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add']) && isset($_POST[
     if($_POST['type']=='produit'){
         $panier = unserialize($_SESSION['panier']);
         $panier->addPanier(['id'=>$_POST['add'], 'type'=>$_POST['type']]);
-        var_dump($panier);
         $_SESSION['panier'] = serialize($panier);
         
     } elseif ($_POST['type']=='menu'){
         $panier = unserialize($_SESSION['panier']);
         $panier->addPanier(['id'=>$_POST['add'], 'type'=>$_POST['type']]);
-        var_dump($panier);
         $_SESSION['panier'] = serialize($panier);
     }
 }

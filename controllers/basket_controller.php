@@ -2,7 +2,7 @@
 require 'bdd.php';
 require 'class.php';
 
-$panier = unserialize($_SESSION('panier'));
+
 
 if(isset($_POST['id'])){
     $products = $bdd->prepare("SELECT * from produit WHERE $id = :id");

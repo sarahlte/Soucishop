@@ -1,6 +1,5 @@
 <?php 
 require './controllers/products_controller.php';
-
 ?>
 
 <div>
@@ -16,7 +15,7 @@ require './controllers/products_controller.php';
                         <form method='post'>
                             <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
                             <input type="hidden" name="type" value="produit"/>
-                            <button type='submit' name='add' value="<?= $product['id']?>" class="card-link-price">ajouter au panier -></button>
+                            <button onclick="add(event, <?= $product['id'] ?>)" type ="submit" name='add' value="<?= $product['id']?>" class="card-link-price">ajouter au panier -></button>
                         </form>
                         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
                             <form action="?page=modify" method="post">
@@ -57,4 +56,5 @@ require './controllers/products_controller.php';
             <a href="?page=add" class="button-up">Ajouter un produit -></a>
         <?php }?>
     </div>
+   <script src="./script/basket.js"></script>
 </div>

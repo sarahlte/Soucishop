@@ -1,15 +1,20 @@
 
-const div_basket = document.getElementById('nb-item');
+// async function fetchText() {
+//   let response = await fetch('./views/maki_view.php');
+//   let data = await response.text();
+//   console.log(data);
+// }
 
-async function item(){
-  await fetch('./controllers/basket_ajax.php')
-  .then((body) => {
-    body)})
-  //.catch(err => console.log(err))
+
+let compte = 0;
+
+function add(event, id){
+  event.preventDefault();
+  console.log(id);
+  compte++
+  updateCount();
 }
 
-
-let response = item();
-console.log(response);
-
-
+function updateCount(){
+  document.getElementById('nb-panier').innerHTML = compte;
+}
