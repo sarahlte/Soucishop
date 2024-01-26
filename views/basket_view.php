@@ -1,9 +1,9 @@
 <?php
 include './controllers/basket_controller.php';
 ?>
-
+<script serc="./script/basket.js"></script>
 <div class="display-log">
-    <form method="post" action="panier.php" class="comm-table">
+    <form method="post" class="comm-table">
         <table class="comm-table">
             <tr class="comm-head">
                 <td class="comm-tit">
@@ -22,25 +22,36 @@ include './controllers/basket_controller.php';
                     modifier
                 </td>
             </tr>
+            <?php foreach($items as $item){
+            $id = $item['id'];
+            $type = $item['type'];
+            $nb = $item['nb'];
+            $req = $bdd->prepare("SELECT * FROM $type WHERE id = :id");
+            $req->execute([
+                'id'=>$id
+            ]);
+            $response = $req->fetch();
+            $prix_total = $response['prix_vente']*$nb;?>
             <tr class="comm-line">
                 <td class="comm-ele">
-                    nom du produit là
+                    <?= $response['nom']?>
                 </td>
                 <td class="comm-ele">
-                    nom du produit là
+                    <?= $response['prix_vente']?>0
                 </td>
                 <td class="comm-ele">
-                    nom du produit là
+                    <?= $nb ?>
                 </td>
                 <td class="comm-ele">
-                    nom du produit là
+                    <?= $prix_total?>0
                 </td>
                 <td class="comm-ele modif">
-                    <button class="comm-modif">-</button>
-                    <button class="comm-modif">+</button>
+                    <button class="comm-modif" name="moins">-<?php $item['nb'] -=1; ?></button>
+                    <button class="comm-modif" name='plus'>+<?php $item['nb'] += 1; ?></button>
                 </td>
             </tr>
-            <tr class="comm-line">
+            <?php }?>
+            <tr class="comm-line" id="livraison-div" hidden='true'>
                 <td class="comm-ele">
                     
                 </td>
@@ -51,12 +62,12 @@ include './controllers/basket_controller.php';
                     livraison
                 </td>
                 <td class="comm-ele" colspan="2">
-                    0
+                    5.00
                 </td>
             </tr>
             <tr class="comm-line">
                 <td class="comm-ele" colspan="2">
-                <input type="checkbox" id="livraison"> Livraison à 6 €
+                <input type="checkbox" id="livraison" onchange="handleChange(this);"> Livraison à 5 €
                 </td>
                 <td class="comm-ele">
                     total

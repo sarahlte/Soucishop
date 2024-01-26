@@ -305,7 +305,28 @@ Class Panier{
         $this->userId = $userId;
     }
     public function addPanier($produit){
-        $this->produits[] =  $produit;
+        $id = $produit['id'];
+        $nb = count($this->produits);
+        $count = $nb;
+        for ($i= 0; $i < $nb; $i++){
+            if(isset($this->produits[$i]['id']) && $this->produits[$i]['id']==$id){
+                $this->produits[$i]['nb'] += $produit['nb'];
+            } else {
+                $count -= 1;
+            }
+        }
+        if ($count == 0){
+            $this->produits[] = $produit;
+        }
+    }
+    public function delProduits($produit){
+        $id = $produit['id'];
+        $nb = count($this->produits);
+        for ($i= 0; $i < $nb; $i++){
+            if(isset($this->produits[$i]['id']) && $this->produits[$i]['id']==$id){
+                $this->produits[$i]['nb'] -= $produit['nb'];
+            } 
+        }
     }
     public function setNbItem(){
         $this->nbItem = count($this->produits);

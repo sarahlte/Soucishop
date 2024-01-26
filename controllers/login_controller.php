@@ -1,7 +1,7 @@
 <?php
 
 require 'bdd.php';
-require 'basket_controller.php';
+require 'class.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = htmlspecialchars($_POST['email']);
