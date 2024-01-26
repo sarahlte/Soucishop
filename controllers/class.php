@@ -299,7 +299,7 @@ Class Panier{
     private const LIVRAISON = 5;
     private $bdr;
     private $nbItem;
-    private static $totalItem = 0;
+    private $totalItem = 0;
     private array $produits = [];
 
     public function __construct($userId){
@@ -332,13 +332,13 @@ Class Panier{
     }
 
     public function setTotalItem($ici){
-        self::$totalItem = $ici;
+        $this->totalItem = $ici;
     }
     public function setNbItem(){
         $this->nbItem = count($this->produits);
     }
-    public static function getTotalItem() {
-        return self::$totalItem;
+    public function getTotalItem() {
+        return $this->totalItem;
     }
     public function getNbItem(){
         return $this->nbItem;

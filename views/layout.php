@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="./script/basket.js"></script>
 </head>
 <body>
     <header>
@@ -40,12 +41,7 @@
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
           <a class="panier" href="?page=basket">panier</a>
-          <div class="notif-panier" id="nb-panier"><?php if(isset($_SESSION['panier'])){
-          $panier=unserialize($_SESSION['panier']);
-          echo $panier->getTotalitem();
-          }else{
-            echo '0';
-          }?></div>
+          <div class="notif-panier" id="nb-panier" onclick="fetchText()"></div>
           <img class="logo" src="./assets/logomini.png">
         </div>
       </div>
