@@ -1,10 +1,8 @@
 <?php 
 require './controllers/order_controller.php';
-var_dump($_SESSION);
-var_dump($views);
 ?>
 
-<div>
+<div class="display-basket">
     <table class="comm-table">
         <tr class="comm-head">
             <td class="comm-tit">

@@ -6,10 +6,6 @@ if(isset($_SESSION['panier'])){
 
 
     $panier = unserialize($_SESSION['panier']);
-
-    var_dump($_COOKIE['id_js']);
-    var_dump($_COOKIE['funct_js']);
-    var_dump($_COOKIE['type_js']);
     
     if(isset($_COOKIE['id_js']) && isset($_COOKIE['funct_js']) && isset($_COOKIE['type_js'])){
         $id_js = $_COOKIE['id_js'];
