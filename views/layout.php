@@ -51,7 +51,7 @@
     <main>
       <?php require './views/' . $route . '_view.php'?>
     </main>
-    <footer>
+    <footer class="footer_parent">
       <div class="footer container">
         Copyright© 2024
       </div>
