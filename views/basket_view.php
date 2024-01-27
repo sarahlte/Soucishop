@@ -2,26 +2,28 @@
 include './controllers/basket_controller.php';
 ?>
 <script serc="./script/basket.js"></script>
-<div class="display-log">
+<div class="display-basket">
     <form method="post" class="comm-table">
         <table class="comm-table">
-            <tr class="comm-head">
-                <td class="comm-tit">
-                    produit
-                </td>
-                <td class="comm-tit">
-                    prix unitaire
-                </td>
-                <td class="comm-tit">
-                    quantité
-                </td>
-                <td class="comm-tit">
-                    prix total
-                </td>
-                <td class="comm-tit">
-                    modifier
-                </td>
-            </tr>
+            <thead>
+                <tr class="comm-head">
+                    <td class="comm-tit">
+                        produit
+                    </td>
+                    <td class="comm-tit">
+                        prix unitaire
+                    </td>
+                    <td class="comm-tit">
+                        quantité
+                    </td>
+                    <td class="comm-tit">
+                        prix total
+                    </td>
+                    <td class="comm-tit">
+                        modifier
+                    </td>
+                </tr>
+            </thead>
             <?php foreach($items as $item){
             $id = $item['id'];
             $type = $item['type'];

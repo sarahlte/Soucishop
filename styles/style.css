@@ -213,7 +213,6 @@ align-items: center;
   /** FOOTER **/
 
   .footer_parent{
-    margin-top: 50px;
     position: relative;
   }
 
@@ -223,7 +222,9 @@ align-items: center;
     font-size: 10px;
     text-transform: uppercase;
     bottom: 0;
-    height: 45px;
+    left: 0;
+    right: 0;
+    position: fixed;
     display: flex;
     flex-direction: row;
   }
@@ -421,7 +422,6 @@ align-items: center;
     border: 0;
     font-family: inter;
     color: var(--txt1);
-    cursor: pointer;
   }
 
   .card-link-price{
@@ -471,24 +471,24 @@ align-items: center;
       width: 100%;
       overflow: hidden;
 
-      .item {
-        opacity: 0;
-        width: 100%;
-        height: 100%;
-        display: none;
-        transition: opacity 0.5s ease-in-out;
+    .item {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      transition: opacity 0.5s ease-in-out;
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-        }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
 
-        &.active {
-          opacity: 1;
-          display: block;
-        }
+    &.active {
+      opacity: 1;
+      display: block;
+    }
     }
   }
 }
@@ -528,6 +528,12 @@ align-items: center;
 /* PANIER */
 
 
+
+.display-basket{
+  display: flex;
+  background-color: var(--bg2);
+  margin: 50px 100px;
+}
 
 .comm-table{
   width: 100%;
@@ -657,6 +663,11 @@ ul{
   border: 1px solid var(--bg3);
 }
 
+.prod-display{
+  display: flex;
+  flex-direction: row;
+}
+
 
 
 
@@ -672,5 +683,86 @@ ul{
 
   .hp-card{
     width: 100%;
+  }
+
+  .comm-table{
+    overflow-x:auto;
+  }
+
+  .display-log{
+    margin: 50px 20px;
+  }
+
+  .display-basket{
+    display: flex;
+    background-color: var(--bg2);
+    margin: 50px 20px;
+  }
+
+  table tr {
+    border-bottom: 3px solid;
+    display: block;
+  }
+
+  table td {
+    border-bottom: 1px solid;
+    display: block;
+    text-align: right;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  .modify-input{
+    width: 100px;
+  }
+
+  .register-input{
+    width: 200px;
+  }
+
+  .prod-display{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .card-price{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .card-link-price-a{
+  width: 100%;
+  }
+
+  .register-input{
+    width: 250px;
+  }
+
+  .display-log{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .login-log{
+    width: 90%;
+  }
+
+  .register-log{
+    width: 90%;
+  }
+
+  .profil-log{
+    width: 90%;
   }
 }

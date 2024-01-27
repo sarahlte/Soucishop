@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./script/basket.js"></script>
 </head>
 <body>
@@ -38,6 +39,8 @@
         <div class="logopan">
           <?php if(isset($_SESSION['connexion']) && $_SESSION['connexion'] == 'connected'):?>
           <a class="panier" href="?page=logout">deconnexion</a>
+          <a class="panier" href="?page=basket">panier</a>
+          <div class="notif-panier" id="nb-panier" onclick="effectuerAppelAjax()"></div>
           <?php else : ?>
           <a class="panier" href="?page=register">inscription</a>
           <a class="panier" href="?page=login">connexion</a>

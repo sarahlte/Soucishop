@@ -57,11 +57,12 @@ require './controllers/add_controller.php';
                 <label for="img3"></label>
                 <input type="file" name='img3'>
             </div>
-            <ul>
                 <?php foreach($products as $product):?>
-                    <li><input name="<?= $product['id']?>" type="checkbox" value="<?= $product['id'];?>" class="checkbox">
-                    <label for="<?= $product['id']?>"><?= $product['nom']?></label>
-                    <input placeholder="quantité" name="<?= $product['id']?>b"></li>
+                    <div class="prod-display">
+                        <input name="<?= $product['id']?>" type="checkbox" value="<?= $product['id'];?>" class="checkbox">
+                        <label for="<?= $product['id']?>"><?= $product['nom']?></label>
+                        <input placeholder="quantité" name="<?= $product['id']?>b">
+                    </div>
                 <?php endforeach; ?>
                 </ul>
             <button type='submit' class="register-submit">Ajouter</button>
