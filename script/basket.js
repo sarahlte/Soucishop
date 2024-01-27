@@ -1,16 +1,10 @@
-
-async function fetchText() {
-  let response = await fetch('./controllers/basket_ajax.php');
-  let data = await response.json();
-  console.log(data);
-}
-
 let boutonAppelAjax = document.getElementById('nb-panier');
 
 
-if (boutonAppelAjax != null) {
-    boutonAppelAjax.onclick = effectuerAppelAjax;
-}
+let body = document.querySelector('body');
+
+onload = effectuerAppelAjax;
+onchange = effectuerAppelAjax;
 
 
 function effectuerAppelAjax() {

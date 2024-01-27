@@ -1,5 +1,7 @@
 <?php 
 require './controllers/order_controller.php';
+var_dump($_SESSION);
+var_dump($views);
 ?>
 
 <div>
@@ -27,33 +29,34 @@ require './controllers/order_controller.php';
                 Produit.s
             </td>
         </tr>
-        <?php foreach($reqs as $req):?>
+        <?php if(isset($views)){ 
+        foreach($views as $view):?>
         <tr class="comm-line">
             <td class="comm-ele">
-                <?= $req['id']?>
+                <?= $view['id']?>
             </td>
             <td class="comm-ele">
-                <?= $req['date']?>
+                <?= $view['date']?>
             </td>
             <td class="comm-ele">
-                <?= $req['prix_total']?>
+                <?= $view['prix_total']?>
             </td>
             <td class="comm-ele">
-                <?= $req['livraison']?>
+                <?= $view['livraison']?>
             </td>
             <td class="comm-ele">
-                <?= $req['recu']?>
+                <?= $view['recu']?>
             </td>
             <td class="comm-ele">
-                <?= $req['adresse']?>
-                <?= $req['code_postal']?>
-                <?= $req['ville']?>
-                <?= $req['complement_d_adresse']?>
+                <?= $view['adresse']?>
+                <?= $view['code_postal']?>
+                <?= $view['ville']?>
+                <?= $view['complement_d_adresse']?>
             </td>
             <td class="comm-ele">
-                <?= $req['produits']?>
+                <?= $view['produits']?>
             </td>
         </tr>
-        <?php endforeach;?>
+        <?php endforeach;}?>
     </table>
 </div>

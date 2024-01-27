@@ -43,7 +43,7 @@
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
           <a class="panier" href="?page=basket">panier</a>
-          <div class="notif-panier" id="nb-panier" onclick="effectuerAppelAjax()"></div>
+          <div class="notif-panier" id="nb-panier"></div>
           <img class="logo" src="./assets/logomini.png">
         </div>
       </div>
