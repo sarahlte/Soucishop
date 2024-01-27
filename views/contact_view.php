@@ -6,6 +6,11 @@ require './controllers/contact_controller.php'
     <main>
         <container>
             <div class="display-log">
+                <div class="profil-log">
+                    <div class="register-txt">
+                        Un message à nous faire passer ? Nous répondrons à votre message par mail.
+                    </div>
+                </div>
                 <form action="" method="post" enctype="multipart/form-data" class="register-display">
                     <div class="register-disp">
                         <label for="nom" class="login-label">Nom</label>

@@ -102,7 +102,7 @@ include './controllers/basket_controller.php';
                 <input type="hidden" name="commande_total" value="<?= $commande_total ?>"/>
                 </td>
                 <td class="comm-ele modif">
-                <button class="comm-payer">payer</button>
+                <button class="comm-payer button">payer</button>
                 </td>
             </tr>
         </table>
