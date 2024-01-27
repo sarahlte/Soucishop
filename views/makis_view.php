@@ -1,7 +1,7 @@
 <?php 
 require './controllers/products_controller.php';
 ?>
-<script serc="./script/delete.js"></script>
+<script src="./script/delete.js"></script>
 
 <div>
     <div class="container hp-card-contain">
@@ -16,18 +16,18 @@ require './controllers/products_controller.php';
                         <form method='post'>
                             <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
                             <input type="hidden" name="type" value="produit"/>
-                            <button onclick="add(event, <?= $product['id'] ?>)" type ="submit" name='add' value="<?= $product['id']?>" class="card-link-price button">ajouter au panier -></button>
+                            <button onclick="add(event, <?= $product['id'] ?>)" type ="submit" name='add' value="<?= $product['id']?>" class="card-link-price-a button">ajouter au panier -></button>
                         </form>
                         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
                             <form action="?page=modify" method="post">
                                 <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                                 <input type="hidden" name="type" value="produit"/>
-                                <button class="card-link-price button" type="submit" name="id" value="<?= $product['id']?>">Modifier</button>
+                                <button class="card-link-price-a button" type="submit" name="id" value="<?= $product['id']?>">Modifier</button>
                             </form>
                             <form  method="post">
                                 <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
                                 <input type="hidden" name="type" value="produit"/>
-                                <button onclick="toDelete()" class="card-link-price button" type="submit" name="delete" value="<?= $product['id']?>">X</button>
+                                <button onclick="toDelete()" class="card-link-price-a button" type="submit" name="delete" value="<?= $product['id']?>">X</button>
                             </form>
                         <?php }?>
                     </div>
