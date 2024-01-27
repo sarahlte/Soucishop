@@ -307,10 +307,11 @@ Class Panier{
     }
     public function addPanier($produit){
         $id = $produit['id'];
+        $type = $produit['type'];
         $nb = count($this->produits);
         $count = $nb;
         for ($i= 0; $i < $nb; $i++){
-            if(isset($this->produits[$i]['id']) && $this->produits[$i]['id']==$id){
+            if(isset($this->produits[$i]['id']) && $this->produits[$i]['id']==$id && $this->produits[$i]['type'] == $type){
                 $this->produits[$i]['nb'] += $produit['nb'];
             } else {
                 $count -= 1;
@@ -323,11 +324,17 @@ Class Panier{
     }
     public function delProduits($produit){
         $id = $produit['id'];
+        $type = $produit['type'];
         $nb = count($this->produits);
         for ($i= 0; $i < $nb; $i++){
-            if(isset($this->produits[$i]['id']) && $this->produits[$i]['id']==$id){
-                $this->produits[$i]['nb'] -= $produit['nb'];
-            } 
+            if(isset($this->produits[$i]['id']) && $this->produits[$i]['id']==$id && $this->produits[$i]['type'] == $type){
+                if($this->produits[$i]['nb'] > 1){
+                    $this->produits[$i]['nb'] -= 1;
+                } elseif($this->produits[$i]['nb'] == 1){
+                    array_splice($this->produits, $i);
+                }
+                $this->setTotalItem($this->getTotalItem()-1);
+            }
         }
     }
 

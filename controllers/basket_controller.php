@@ -4,19 +4,44 @@ require 'class.php';
 
 if(isset($_SESSION['panier'])){
 
+
     $panier = unserialize($_SESSION['panier']);
 
-    $items = $panier->getProduits();
-    $total = $panier->getTotalItem();
-
-    function quantity($produit){
-        $panier = unserialize($_SESSION['panier']);
-        if(isset($_POST['moins'])){
-            $produit['nb'] -=1;
-        } elseif(isset($_POST['plus'])){
-            $panier->addProduits($produit);
+    var_dump($_COOKIE['id_js']);
+    var_dump($_COOKIE['funct_js']);
+    var_dump($_COOKIE['type_js']);
+    
+    if(isset($_COOKIE['id_js']) && isset($_COOKIE['funct_js']) && isset($_COOKIE['type_js'])){
+        $id_js = $_COOKIE['id_js'];
+        $funct_js = $_COOKIE['funct_js'];
+        if($_COOKIE['type_js'] == 1){
+            $type_js = 'produit';
+        } elseif($_COOKIE['type_js'] == 0){
+            $type_js = 'menu';
+        }
+        $produit_js = ['id'=>$id_js, 'type'=>$type_js, 'nb'=>1];
+        if($funct_js == 'add'){
+            $panier->addPanier($produit_js);
+            $_SESSION['nb'] = $panier->getTotalItem();
+            $_SESSION['panier'] = serialize($panier);
+        } elseif($funct_js == 'del'){
+            $panier->delProduits($produit_js);
+            $_SESSION['nb'] = $panier->getTotalItem();
+            $_SESSION['panier'] = serialize($panier);
         }
     }
+
+    if(isset($_COOKIE['$livraison'])){
+        $livraison = $_COOKIE['$livraison'];
+        if($livraison == 1){
+
+        }
+    }
+
+    $panier = unserialize($_SESSION['panier']);
+    $items = $panier->getProduits();
+    $total = $panier->getTotalItem();
+    var_dump($panier->getTotalItem());
 
 
     if(isset($_POST['id'])){
@@ -46,12 +71,24 @@ if(isset($_SESSION['panier'])){
             $response = $req->fetch();
             if(isset($response['prix_vente'])){
                 $prix_total = $response['prix_vente']*$nb;
+                if(isset($_COOKIE['$livraison'])){
+                    $livraison = $_COOKIE['$livraison'];
+                    if($livraison == 1){
+                        $prix_total += 5;
+                    }
+                }
             } elseif(isset($response['prix'])){
                 $prix_total = $response['prix']*$nb;
+                if(isset($_COOKIE['$livraison'])){
+                    $livraison = $_COOKIE['$livraison'];
+                    if($livraison == 1){
+                        $prix_total += 5;
+                    }
+                }
             }
             $p_commande = $p_commande.$nb.' x '.$response['nom'].' - '.$prix_total.'€ </br>';
         }
-        var_dump($p_commande);
+/*         var_dump($p_commande);
         var_dump($_POST['commande_total']);
         var_dump($livraison);
         var_dump($_POST['nom']);
@@ -59,10 +96,10 @@ if(isset($_SESSION['panier'])){
         var_dump($_POST['adresse']);
         var_dump($_POST['code_postal']);
         var_dump($_POST['ville']);
-        var_dump($_POST['cadresse']);
+        var_dump($_POST['cadresse']); */
         $commande = $bdd->prepare("INSERT INTO commande (prix_total, livraison, nom, prenom, adresse, code_postal, ville, compelement_d_adresse) VALUES (:prix_total, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :compelement_d_adresse)");
 
-        $commande->execute([
+/*         $commande->execute([
             'prix_total'=>htmlspecialchars($_POST['commande_total']),
             'livraison'=>htmlspecialchars($livraison),
             'nom'=>htmlspecialchars($_POST['nom']),
@@ -71,7 +108,7 @@ if(isset($_SESSION['panier'])){
             'code_postal'=>htmlspecialchars($_POST['code_postal']),
             'ville'=>htmlspecialchars($_POST['ville']),
             'cadresse'=>htmlspecialchars($_POST['cadresse']),
-        ]);
+        ]); */
 
         // if ($stmt->execute()) {
         //     $_SESSION['status'] = 'success';

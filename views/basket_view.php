@@ -25,6 +25,11 @@ include './controllers/basket_controller.php';
             <?php foreach($items as $item){
             $id = $item['id'];
             $type = $item['type'];
+            if($type == 'produit'){
+                $type_js = 1;
+            } elseif($type == 'menu'){
+                $type_js = 0;
+            }
             $nb = $item['nb'];
             $req = $bdd->prepare("SELECT * FROM $type WHERE id = :id");
             $req->execute([
@@ -55,8 +60,8 @@ include './controllers/basket_controller.php';
                     <?= $prix_total?>0
                 </td>
                 <td class="comm-ele modif">
-                    <button class="comm-modif" name="moins">-<?php $item['nb'] -=1; ?></button>
-                    <button class="comm-modif" name='plus'>+<?php $item['nb'] += 1; ?></button>
+                    <button class="comm-modif" onclick="del(<?= $item['id']?>,<?= $type_js ?>)">-</button>
+                    <button class="comm-modif" onclick="add(<?= $item['id']?>,<?= $type_js ?>)">+</button>
                 </td>
             </tr>
             <?php }?>
@@ -82,7 +87,17 @@ include './controllers/basket_controller.php';
                     total
                 </td>
                 <td class="comm-ele">
-                <?php $commande_total = 0;
+                <?php 
+                if(isset($_COOKIE['$livraison'])){
+                    $livraison = $_COOKIE['$livraison'];
+                    if($livraison == 1){
+                        $commande_total = 5;
+                    } elseif($livraison == 0){
+                        $commande_total = 0;
+                    }
+                } else {
+                    $commande_total = 0;
+                }
                 foreach($items as $item){ 
                     $id = $item['id'];
                     $type = $item['type'];

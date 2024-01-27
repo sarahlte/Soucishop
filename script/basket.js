@@ -51,3 +51,26 @@ function handleChange(checkbox) {
       document.getElementById("livraison-infos").hidden = true;
  }
 }
+
+function add(id, type){
+  document.cookie = "id_js = " + id ;
+  document.cookie = "type_js = " + type ;
+  document.cookie = "funct_js = add";
+  console.log(id)
+}
+
+function del(id, type){
+  document.cookie = "id_js = " + id ;
+  document.cookie = "type_js = " + type ;
+  document.cookie = "funct_js = del";
+  console.log(id)
+}
+
+function track() {
+  if ( document.getElementById("livraison-div").checked==true ) {
+    document.cookie = "livraison = 1"
+  } else {
+    document.cookie = "livraison = 0"
+  }
+};
+
