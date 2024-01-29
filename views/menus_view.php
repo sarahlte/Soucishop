@@ -12,13 +12,13 @@ require './controllers/products_controller.php';
                     <div class="carousel-container">
                         <div class="carousel">
                             <div class="item active">
-                                <img src="./assets/<?= $menu['image1']?>" class="hp-button-img">
+                                <img src="./assets/<?= $menu['image1']?>" class="hp-button-img" alt="menu1">
                             </div>
                             <div class="item">
-                                <img src="./assets/<?= $menu['image2']?>" class="hp-button-img">
+                                <img src="./assets/<?= $menu['image2']?>" class="hp-button-img" alt="menu2">
                             </div>
                             <div class="item">
-                                <img src="./assets/<?= $menu['image3']?>" class="hp-button-img">
+                                <img src="./assets/<?= $menu['image3']?>" class="hp-button-img" alt="menu3">
                             </div>
                         </div>
                     </div>

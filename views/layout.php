@@ -48,7 +48,7 @@
           <a class="panier" href="?page=register">inscription</a>
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
-          <img class="logo" src="./assets/logomini.png">
+          <img class="logo" src="./assets/logomini.png" alt="logo">
         </div>
       </div>
     </header>

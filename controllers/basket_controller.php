@@ -6,7 +6,6 @@ if(isset($_SESSION['panier'])){
 
 
     $panier = unserialize($_SESSION['panier']);
-    var_dump($panier->getProduits());
     
     if(!empty($_COOKIE['id_js']) && !empty($_COOKIE['funct_js']) && !empty($_COOKIE['type_js'])){
         $id_js = $_COOKIE['id_js'];
