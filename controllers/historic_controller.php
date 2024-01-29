@@ -3,16 +3,12 @@
 require 'vendor/autoload.php';
 use Dompdf\Dompdf;
 
-$utilisateurs = $bdd->prepare("SELECT * FROM commande_utilisateur WHERE utilisateur_id = :utilisateur_id");
+$utilisateurs = $bdd->prepare("SELECT commande_id FROM commande_utilisateur WHERE utilisateur_id = :utilisateur_id");
 $utilisateurs->execute([
     ':utilisateur_id'=>$_SESSION['id'],
 ]);
+$users = $utilisateurs->fetchAll();
 
-foreach($utilisateurs as $utilisateur){
-    $reqs = $bdd->prepare("SELECT * FROM commande");
-    $reqs->execute();
-    $commandes = $reqs->fetchAll();
-}
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(isset($_POST['consult']) && $_SESSION['id_commande'] = $_POST['consult']){

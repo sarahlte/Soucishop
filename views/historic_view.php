@@ -27,9 +27,15 @@ require './controllers/historic_controller.php';
                     pdf
                 </td>
             </tr>
-            <?php if(isset($commandes)){
-            foreach($commandes as $commande):?>
+            <?php 
+            if(isset($users)){
+                foreach($users as $user){?>
             <tr class="comm-line">
+                <?php $reqs = $bdd->prepare("SELECT * FROM commande WHERE id = :id");
+                $reqs->execute([
+                    'id'=>$user['commande_id']
+                ]);
+                $commande = $reqs->fetch();?>
                 <td class="comm-ele">
                 <?= $commande['id']?>
                 </td>
@@ -37,10 +43,10 @@ require './controllers/historic_controller.php';
                 <?= $commande['date']?>
                 </td>
                 <td class="comm-ele">
-                <?= $commande['recu']?>
+                    <?= $commande['livraison']?>    
                 </td>
                 <td class="comm-ele">
-                <?= $commande['livraison']?>
+                    <?= $commande['recu']?>
                 </td>
                 <td class="comm-ele">
                 <?= $commande['prix_total']?>
@@ -54,7 +60,7 @@ require './controllers/historic_controller.php';
                     </td>
                 </form>
             </tr>
-            <?php endforeach;}?>
+            <?php }}?>
         </table>
     </form>
 </div>
