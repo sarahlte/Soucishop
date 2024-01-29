@@ -46,10 +46,12 @@ require './controllers/historic_controller.php';
                 <?= $commande['prix_total']?>
                 </td>
                 <td class="comm-ele">
-                    <a href="#" class="comm-payer">consulter</a>
+                    <form method="post">
+                        <button class="comm-payer button" name="consult" value="<?= $commande['id']?>">consulter</button>
+                    </form>
                 </td>
                 <td class="comm-ele">
-                    <button class="comm-payer">pdf</button>
+                    <button class="comm-payer button">pdf</button>
                 </td>
             </tr>
             <?php endforeach;}?>
