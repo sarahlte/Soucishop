@@ -1,12 +1,12 @@
 <?php
-require './controllers/historic_controller.php';
+require './controllers/consult_controller.php';
 ?>
 
 <div class="display-log">
         <table class="comm-table">
             <tr class="comm-head">
                 <td class="comm-tit">
-                    référence
+                    produits
                 </td>
                 <td class="comm-tit">
                     commandé le
