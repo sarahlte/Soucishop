@@ -29,18 +29,6 @@ function effectuerAppelAjax() {
 }
 
 
-let compte = 0;
-
-/* function add(event, id){
-  event.preventDefault();
-  console.log(id);
-  compte++
-  updateCount();
-}
-
-function updateCount(){
-  document.getElementById('nb-panier').innerHTML = compte;
-} */
 
 function handleChange(checkbox) {
   if(checkbox.checked == true){
@@ -67,10 +55,10 @@ function del(id, type){
 }
 
 function track() {
-  if ( document.getElementById("livraison-div").checked==true ) {
-    document.cookie = "livraison = 1"
-  } else {
-    document.cookie = "livraison = 0"
+  console.log(document.getElementById("livraison").checked)
+  if ( document.getElementById("livraison").checked==true ) {
+    document.cookie = "livraison ="+ document.getElementById("livraison").checked;
+  } else if(document.getElementById("livraison").checked==false){
+    document.cookie = "livraison ="+document.getElementById("livraison").checked;
   }
 };
-

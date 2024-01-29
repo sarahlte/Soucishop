@@ -83,23 +83,13 @@ include './controllers/basket_controller.php';
             </tr>
             <tr class="comm-line">
                 <td class="comm-ele" colspan="2">
-                <input type="checkbox" id="livraison" name="livraison" onchange="handleChange(this);"> Livraison à 5 €
+                <input type="checkbox" id="livraison" name="livraison" onclick="handleChange(this); track()"> Livraison à 5 €
                 </td>
                 <td class="comm-ele">
                     total
                 </td>
                 <td class="comm-ele">
                 <?php 
-                if(isset($_COOKIE['$livraison'])){
-                    $livraison = $_COOKIE['$livraison'];
-                    if($livraison == 1){
-                        $commande_total = 5;
-                    } elseif($livraison == 0){
-                        $commande_total = 0;
-                    }
-                } else {
-                    $commande_total = 0;
-                }
                 foreach($items as $item){ 
                     $id = $item['id'];
                     $type = $item['type'];

@@ -7,9 +7,6 @@ if(isset($_SESSION['panier'])){
 
     $panier = unserialize($_SESSION['panier']);
 
-    var_dump($_COOKIE['id_js']);
-    var_dump($_COOKIE['funct_js']);
-    var_dump($_COOKIE['type_js']);
     
     if(isset($_COOKIE['id_js']) && isset($_COOKIE['funct_js']) && isset($_COOKIE['type_js'])){
         $id_js = $_COOKIE['id_js'];
@@ -30,18 +27,23 @@ if(isset($_SESSION['panier'])){
             $_SESSION['panier'] = serialize($panier);
         }
     }
-
-    if(isset($_COOKIE['$livraison'])){
-        $livraison = $_COOKIE['$livraison'];
-        if($livraison == 1){
-
+    
+    if(isset($_COOKIE['livraison'])){
+        $livraison_js = $_COOKIE['livraison'];
+        var_dump($_COOKIE['livraison']);
+        if($livraison_js == 'true'){
+            $commande_total = 5;
+        } elseif($livraison_js == 'false'){
+            $commande_total = 0;
         }
+    } else {
+        $commande_total = 0;
     }
 
     $panier = unserialize($_SESSION['panier']);
     $items = $panier->getProduits();
     $total = $panier->getTotalItem();
-    var_dump($panier->getTotalItem());
+    var_dump($items);
 
 
     if(isset($_POST['id'])){
@@ -51,7 +53,8 @@ if(isset($_SESSION['panier'])){
         ]);
     }
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token']) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !empty($items)){
+        $date = date('Y-m-d');
 
         if(isset($_POST['livraison'])){
             $livraison = 0;
@@ -88,38 +91,67 @@ if(isset($_SESSION['panier'])){
             }
             $p_commande = $p_commande.$nb.' x '.$response['nom'].' - '.$prix_total.'€ </br>';
         }
-/*         var_dump($p_commande);
-        var_dump($_POST['commande_total']);
-        var_dump($livraison);
-        var_dump($_POST['nom']);
-        var_dump($_POST['prenom']);
-        var_dump($_POST['adresse']);
-        var_dump($_POST['code_postal']);
-        var_dump($_POST['ville']);
-        var_dump($_POST['cadresse']); */
-        $commande = $bdd->prepare("INSERT INTO commande (prix_total, livraison, nom, prenom, adresse, code_postal, ville, compelement_d_adresse) VALUES (:prix_total, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :compelement_d_adresse)");
+        if($livraison == 1){
+            if (!empty($_POST['cadresse'])){
+                $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, livraison, nom, prenom, adresse, code_postal, ville, compelement_d_adresse, produits) VALUES ( :date, :prix_total, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :compelement_d_adresse, :produits)");
+                $commande->execute([
+                    'prix_total'=>htmlspecialchars($_POST['commande_total']),
+                    'livraison'=>htmlspecialchars($livraison),
+                    'nom'=>htmlspecialchars($_POST['nom']),
+                    'prenom'=>htmlspecialchars($_POST['prenom']),
+                    'adresse'=>htmlspecialchars($_POST['adresse']),
+                    'code_postal'=>htmlspecialchars($_POST['code_postal']),
+                    'ville'=>htmlspecialchars($_POST['ville']),
+                    'cadresse'=>htmlspecialchars($_POST['cadresse']),
+                    'produits'=>$p_commande,
+                    'date'=>htmlspecialchars($date)
+                ]);  
+            } else {
+                $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, livraison, nom, prenom, adresse, code_postal, ville, produits) VALUES (:date, :prix_total, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :produits");
+                $commande->execute([
+                    'prix_total'=>htmlspecialchars($_POST['commande_total']),
+                    'livraison'=>htmlspecialchars($livraison),
+                    'nom'=>htmlspecialchars($_POST['nom']),
+                    'prenom'=>htmlspecialchars($_POST['prenom']),
+                    'adresse'=>htmlspecialchars($_POST['adresse']),
+                    'code_postal'=>htmlspecialchars($_POST['code_postal']),
+                    'ville'=>htmlspecialchars($_POST['ville']),
+                    'produits'=>$p_commande,
+                    'date'=>htmlspecialchars($date)
+                ]); 
+            }
 
-/*         $commande->execute([
-            'prix_total'=>htmlspecialchars($_POST['commande_total']),
-            'livraison'=>htmlspecialchars($livraison),
-            'nom'=>htmlspecialchars($_POST['nom']),
-            'prenom'=>htmlspecialchars($_POST['prenom']),
-            'adresse'=>htmlspecialchars($_POST['adresse']),
-            'code_postal'=>htmlspecialchars($_POST['code_postal']),
-            'ville'=>htmlspecialchars($_POST['ville']),
-            'cadresse'=>htmlspecialchars($_POST['cadresse']),
-        ]); */
+        } elseif($livraison == 0){
+            $response = $bdd->prepare("SELECT * FROM utilisateur WHERE id = :id");
+            $response->execute([
+                'id'=> $panier->getUserId()
+            ]);
+            $user = $response->fetch();
+            $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, livraison, nom, prenom, produits) VALUES (:date, :prix_total, :livraison, :nom, :prenom, :produits)");;
 
-        // if ($stmt->execute()) {
-        //     $_SESSION['status'] = 'success';
-        //     $_SESSION['message'] = 'Votre commande a bien été passée !';
-        //     header("Location: ?page=connexion");
-        //     exit();
-        // }
-    }
+            $commande->execute([
+                'prix_total'=>htmlspecialchars($_POST['commande_total']),
+                'livraison'=>htmlspecialchars($livraison),
+                'nom'=>htmlspecialchars($user['nom']),
+                'prenom'=>htmlspecialchars($user['prenom']), 
+                'produits'=>$p_commande,
+                'date'=>htmlspecialchars($date)
+            ]);    
+        }
+
+        if ($commande->execute()) {
+            $_SESSION['status'] = 'success';
+            $_SESSION['message'] = 'Votre commande a bien été passée !';
+            $panier = new Panier($user['id']);
+            $_SESSION['nb'] = $panier->getTotalItem();
+            $_SESSION['panier'] = serialize($panier);
+            header("Location: ?page=homepage");
+            exit();
+        }
+    } 
 } else {
     $_SESSION['status'] = 'error';
     $_SESSION['message'] = 'Veuillez vous connecter pour consulter le panier !';
-    header("Location: ?page=login");
+    header("Location: ?page=homepage");
     exit();
 }

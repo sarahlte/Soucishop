@@ -54,7 +54,7 @@ require './controllers/products_controller.php';
     <div class="container">
         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
             $_SESSION['type']='produit'?>
-            <a href="?page=add" class="button-up">Ajouter un produit -></a>
+            <a href="?page=addProduit" class="button-up">Ajouter un produit -></a>
         <?php }?>
     </div>
    <!-- <script src="./script/basket.js"></script> -->

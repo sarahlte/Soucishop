@@ -28,8 +28,10 @@
           <ul class="menu__box">
             <li><a class="menu__item" href="?page=profil">Mon profil</a></li>
             <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'):?>
-            <li><a class="menu__item" href="?page=order">Ajouter un produit</a></li>
-            <li><a class="menu__item" href="#">Commandes</a></li>
+            <li><a class="menu__item" href="?page=add">Ajouter un produit</a></li>
+            <li><a class="menu__item" href="?page=add">Ajouter un utilisateur</a></li>
+            <li><a class="menu__item" href="?page=add_view">Gestion des bons de réduction</a></li>
+            <li><a class="menu__item" href="?page=order">Commandes</a></li>
             <li><a class="menu__item" href="#">Chiffre d'affaire</a></li>
             <?php endif ?>
             <li><a class="menu__item" href="?page=contact">Nous contacter</a></li>
@@ -45,8 +47,6 @@
           <a class="panier" href="?page=register">inscription</a>
           <a class="panier" href="?page=login">connexion</a>
           <?php endif; ?>
-          <a class="panier" href="?page=basket">panier</a>
-          <div class="notif-panier" id="nb-panier"></div>
           <img class="logo" src="./assets/logomini.png">
         </div>
       </div>
