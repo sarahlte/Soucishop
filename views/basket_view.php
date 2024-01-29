@@ -31,7 +31,7 @@ include './controllers/basket_controller.php';
                 $type_js = 1;
             } elseif($type == 'menu'){
                 $type_js = 0;
-            }
+            } 
             $nb = $item['nb'];
             $req = $bdd->prepare("SELECT * FROM $type WHERE id = :id");
             $req->execute([
