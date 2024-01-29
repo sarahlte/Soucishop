@@ -17,18 +17,16 @@ foreach($utilisateurs as $utilisateur){
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(isset($_POST['consult']) && $_SESSION['id_commande'] = $_POST['consult']){
         header("Location: ?page=consult");
-    }else if(isset($_POST['pdf']) && $_SESSION['id_commande'] = $_POST['pdf']){
-        
-        header("Location: ?getPdf");
+    }else if(isset($_POST['getPdf'])){
+        $_SESSION['id_commande'] = $_POST['getPdf'];
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['getPdf'])) {
 
-
     try {
         ob_start();
-        include __DIR__ . '/pdf-print.php';
+        include 'pdf-print.php';
         $content = ob_get_clean();
         ob_end_clean();
 

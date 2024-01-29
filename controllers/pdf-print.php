@@ -21,15 +21,14 @@ require 'pdf-print_controller.php';
             </tr>
         </thead>
         <tbody>
-        <?php if(isset($commandes)){
-            foreach($commandes as $commande):?>
+        <?php if(isset($commande)){?>
             <tr>
                 <td><?= $commande['produits']?></td>
                 <td><?= $commande['date']?></td>
                 <td><?= $commande['prix_total']?> Є</td>
                 <td><?= $commande['recu']?></td>
             </tr>
-            <?php endforeach;}?>
+            <?php }?>
         </tbody>
     </table>
 </div>
