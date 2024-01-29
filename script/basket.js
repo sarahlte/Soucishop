@@ -36,7 +36,6 @@ function add(id, type){
   document.cookie = "type_js = " + type ;
   document.cookie = "funct_js = add";
   console.log(id)
-  location.reload
 }
 
 function del(id, type){
@@ -44,7 +43,6 @@ function del(id, type){
   document.cookie = "type_js = " + type ;
   document.cookie = "funct_js = del";
   console.log(id)
-  location.reload()
 }
 
 function track() {
