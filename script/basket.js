@@ -34,15 +34,16 @@ function effectuerAppelAjax() {
 function add(id, type){
   document.cookie = "id_js = " + id ;
   document.cookie = "type_js = " + type ;
+  console.log(type);
   document.cookie = "funct_js = add";
-  console.log(id)
+  location.reload
 }
 
 function del(id, type){
   document.cookie = "id_js = " + id ;
   document.cookie = "type_js = " + type ;
   document.cookie = "funct_js = del";
-  console.log(id)
+  location.reload
 }
 
 function track() {
