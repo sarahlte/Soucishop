@@ -25,7 +25,7 @@ require 'pdf-print_controller.php';
             <tr>
                 <td><?= $commande['produits']?></td>
                 <td><?= $commande['date']?></td>
-                <td><?= $commande['prix_total']?> Є</td>
+                <td><?= $commande['prix_total']?> €</td>
                 <td><?= $commande['recu']?></td>
             </tr>
             <?php }?>
