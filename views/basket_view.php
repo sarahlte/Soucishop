@@ -53,7 +53,7 @@ include './controllers/basket_controller.php';
                         } elseif(isset($response['prix'])){
                             echo $response['prix'];
                         }
-                    ?>0
+                    ?>
                 </td>
                 <td class="comm-ele">
                     <?= $nb ?>

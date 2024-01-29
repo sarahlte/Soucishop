@@ -43,7 +43,9 @@ require './controllers/historic_controller.php';
                 <?= $commande['date']?>
                 </td>
                 <td class="comm-ele">
-                    <?= $commande['livraison']?>    
+                <?php if($commande['livraison'] == 'true'){
+                    echo 'oui';
+                    }?>    
                 </td>
                 <td class="comm-ele">
                     <?= $commande['recu']?>

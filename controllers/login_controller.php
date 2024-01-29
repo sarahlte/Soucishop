@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         exit();
     } else {
-        echo "Email ou mot de passe invalide";
+        $_SESSION['status'] = 'error';
+        $_SESSION['message'] = 'E-mail ou mot de passe invalide !';
     }
 }
