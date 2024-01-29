@@ -139,6 +139,15 @@ if(isset($_SESSION['panier'])){
         }
 
         if ($commande->execute()) {
+            $id_commande= $bdd->lastInsertId();
+            $id_user = $panier->getUserId();
+
+            $link = $bdd->prepare("INSERT INTO commande_utilisateur (commande_id, utilisateur_id) VALUES (:id_commande, :id_user)");
+            $link->execute([
+                'id_commande'=>$id_commande,
+                'id_user'=>$id_user
+            ]);
+
             $_SESSION['status'] = 'success';
             $_SESSION['message'] = 'Votre commande a bien été passée !';
             $panier = new Panier($user['id']);
