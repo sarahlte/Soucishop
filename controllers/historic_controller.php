@@ -12,6 +12,9 @@ foreach($utilisateurs as $utilisateur){
 }
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $_SESSION['id_commande'] = $_POST['consult'];
-    header("Location: ?page=consult");
+    if(isset($_POST['consult']) && $_SESSION['id_commande'] = $_POST['consult']){
+        header("Location: ?page=consult");
+    }else if(isset($_POST['pdf']) && $_SESSION['id_commande'] = $_POST['pdf']){
+        header("Location: ?page=pdf");
+    }
 }

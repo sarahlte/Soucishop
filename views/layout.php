@@ -27,6 +27,7 @@
 
           <ul class="menu__box">
             <li><a class="menu__item" href="?page=profil">Mon profil</a></li>
+            <li><a class="menu__item" href="?page=historic">Mes commandes</a></li>
             <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'):?>
             <li><a class="menu__item" href="?page=add">Ajouter un produit</a></li>
             <li><a class="menu__item" href="?page=add-admin">Ajouter un utilisateur</a></li>
