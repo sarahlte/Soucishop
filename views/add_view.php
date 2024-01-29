@@ -7,7 +7,7 @@ require './controllers/add_controller.php'; ?>
             <div class="card-title">Les produits</div>
             <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
             $_SESSION['type']='produit';}?>
-            <a href="?page=addProduit" class="card-link">Ajouter un produit -></a>
+            <a href="?page=add-produit" class="card-link">Ajouter un produit -></a>
         </div>
     </div>
     <div class="hp-card">
@@ -16,7 +16,7 @@ require './controllers/add_controller.php'; ?>
             <div class="card-title">Les menus</div>
             <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){ 
             $_SESSION['type']='menu';}?>
-            <a href="?page=addmenu" class="card-link">Ajouter un menu -></a>
+            <a href="?page=add-menu" class="card-link">Ajouter un menu -></a>
         </div>
     </div>
 </div>
