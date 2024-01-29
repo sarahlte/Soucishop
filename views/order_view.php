@@ -40,8 +40,9 @@ require './controllers/order_controller.php';
                 <?= $view['prix_total']?>
             </td>
             <td class="comm-ele">
-
-                <?php if($view['livraison'] == 'true'){?>
+                <?php if($view['livraison'] == 'true'){
+                    echo 'oui';
+                }?>
             </td>
             <td class="comm-ele">
                 <?php if(!empty($view['recu'])){ ?>
