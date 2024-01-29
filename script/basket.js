@@ -38,6 +38,7 @@ function handleChange(checkbox) {
       document.getElementById("livraison-div").hidden = true;
       document.getElementById("livraison-infos").hidden = true;
  }
+ location.reload()
 }
 
 function add(id, type){
@@ -45,6 +46,7 @@ function add(id, type){
   document.cookie = "type_js = " + type ;
   document.cookie = "funct_js = add";
   console.log(id)
+  location.reload
 }
 
 function del(id, type){
@@ -52,6 +54,7 @@ function del(id, type){
   document.cookie = "type_js = " + type ;
   document.cookie = "funct_js = del";
   console.log(id)
+  location.reload()
 }
 
 function track() {
@@ -61,4 +64,5 @@ function track() {
   } else if(document.getElementById("livraison").checked==false){
     document.cookie = "livraison ="+document.getElementById("livraison").checked;
   }
+  location.reload()
 };
