@@ -66,6 +66,7 @@ include './controllers/basket_controller.php';
                     <button class="comm-modif" onclick="add(<?= $item['id']?>,<?= $type_js ?>)">+</button>
                 </td>
             </tr>
+            <?php }?>
             <?php                 
             if(isset($_SESSION['promo-code']) && isset($_SESSION['promo-valeur']) && isset($_SESSION['promo-type'])){                
             ?>
@@ -88,7 +89,6 @@ include './controllers/basket_controller.php';
                 }?>
                 </td>
             </tr> <?php }?>
-            <?php }?>
             <tr class="comm-line" id="livraison-div" <?php if(!empty($_COOKIE['hidden'])){echo ' '.$_COOKIE['hidden'];}?>>
                 <td class="comm-ele">
                     

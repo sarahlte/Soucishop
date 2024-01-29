@@ -8,7 +8,7 @@ if(isset($_SESSION['panier'])){
     $panier = unserialize($_SESSION['panier']);
     var_dump($panier->getProduits());
     
-    if(isset($_COOKIE['id_js']) && isset($_COOKIE['funct_js']) && isset($_COOKIE['type_js'])){
+    if(!empty($_COOKIE['id_js']) && !empty($_COOKIE['funct_js']) && !empty($_COOKIE['type_js'])){
         $id_js = $_COOKIE['id_js'];
         $funct_js = $_COOKIE['funct_js'];
         if($_COOKIE['type_js'] == 1){
@@ -26,6 +26,9 @@ if(isset($_SESSION['panier'])){
             $_SESSION['nb'] = $panier->getTotalItem();
             $_SESSION['panier'] = serialize($panier);
         }
+        setcookie('id_js');
+        setcookie('funct_js');
+        setcookie('type_js');
     }
     
     if(isset($_COOKIE['livraison'])){
@@ -43,7 +46,7 @@ if(isset($_SESSION['panier'])){
     $items = $panier->getProduits();
     $total = $panier->getTotalItem();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !empty($items) && isset($_POST['discount'])){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !empty($items) && !empty($_POST['discount'])){
         unset($_SESSION['promo-type']);
         unset($_SESSION['promo-code']);
         unset($_SESSION['promo-valeur']);
