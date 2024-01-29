@@ -32,7 +32,6 @@ if(isset($_SESSION['panier'])){
     
     if(isset($_COOKIE['livraison'])){
         $livraison_js = $_COOKIE['livraison'];
-        var_dump($_COOKIE['livraison']);
         if($livraison_js == 'true'){
             $commande_total = 5;
         } elseif($livraison_js == 'false'){
@@ -45,7 +44,6 @@ if(isset($_SESSION['panier'])){
     $panier = unserialize($_SESSION['panier']);
     $items = $panier->getProduits();
     $total = $panier->getTotalItem();
-    var_dump($items);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !empty($items) && !empty($_POST['discount'])){
         unset($_SESSION['promo-type']);
