@@ -38,9 +38,12 @@ Class Panier{
                 if($this->produits[$i]['nb'] > 1){
                     $this->produits[$i]['nb'] -= 1;
                 } elseif($this->produits[$i]['nb'] == 1){
-                    array_splice($this->produits, $i);
+                    array_slice($this->produits, $i);
                 }
                 $this->setTotalItem($this->getTotalItem()-1);
+            }
+            if($this->produits[$i]['nb'] == 0){
+                
             }
         }
     }

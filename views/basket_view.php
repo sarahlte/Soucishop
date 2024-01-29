@@ -67,7 +67,7 @@ include './controllers/basket_controller.php';
                 </td>
             </tr>
             <?php }?>
-            <tr class="comm-line" id="livraison-div" hidden='true'>
+            <tr class="comm-line" id="livraison-div" <?php if(!empty($_COOKIE['hidden'])){echo ' '.$_COOKIE['hidden'];}?>>
                 <td class="comm-ele">
                     
                 </td>
@@ -83,7 +83,7 @@ include './controllers/basket_controller.php';
             </tr>
             <tr class="comm-line">
                 <td class="comm-ele" colspan="2">
-               <input type="checkbox" id="livraison" name="livraison" onchange="track(); this.form.submit();" <?php if(!empty($_COOKIE['checked'])){ echo $_COOKIE['checked'];} if(!empty($_COOKIE['hidden'])){echo $_COOKIE['hidden'];}?>> Livraison à 5 €
+                <input type="checkbox" id="livraison" name="livraison" onchange="track(); this.form.submit();" <?php if(!empty($_COOKIE['checked'])){ echo $_COOKIE['checked'];} ?>> Livraison à 5 €
                 </td>
                 <td class="comm-ele">
                     total
@@ -113,7 +113,7 @@ include './controllers/basket_controller.php';
                 </td>
             </tr>
         </table>
-        <div class="register-display" id="livraison-infos" hidden='true'>
+        <div class="register-display" id="livraison-infos" <?php if(!empty($_COOKIE['hidden'])){echo ' '.$_COOKIE['hidden'];}?>>
             <div class="register-disp">
                 <label for="nom" class="login-label">Nom</label>
                 <input type="text" placeholder="Nom" name="nom" class="register-input">

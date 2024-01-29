@@ -62,7 +62,7 @@ function track() {
   if ( document.getElementById("livraison").checked==true ) {
     document.cookie = "livraison ="+ document.getElementById("livraison").checked;
     document.cookie = "checked = checked";
-    document.cookie = "hidden = hidden";
+    document.cookie = "hidden = ";
   } else if(document.getElementById("livraison").checked==false){
     document.cookie = "livraison ="+document.getElementById("livraison").checked;
     document.cookie = "checked = ";
