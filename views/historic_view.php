@@ -50,7 +50,7 @@ require './controllers/historic_controller.php';
                         <button class="comm-payer button" name="consult" onclick="this.form.submit()" value="<?= $commande['id']?>">consulter</button>
                     </td>
                     <td class="comm-ele">
-                        <button class="comm-payer button" name="pdf" onclick="this.form.submit()" value="<?= $commande['id']?>">pdf</button>
+                        <button class="comm-payer button" name="getPdf" onclick="this.form.submit()" value="<?= $commande['id']?>">pdf</button>
                     </td>
                 </form>
             </tr>
