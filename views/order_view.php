@@ -43,7 +43,14 @@ require './controllers/order_controller.php';
                 <?= $view['livraison']?>
             </td>
             <td class="comm-ele">
-                <?= $view['recu']?>
+                <?php if(!empty($view['recu'])){ ?>
+                    <?= $view['recu']?>
+                <?php } else { ?>
+                    <form method="post">
+                        <input type="hidden" name="id" value="<?= $view['id']?>">
+                        <button class="comm-payer button">reçu</button>
+                    </form>
+                <?php } ?>
             </td>
             <td class="comm-ele">
                 <?= $view['adresse']?>
