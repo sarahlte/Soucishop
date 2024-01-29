@@ -45,14 +45,14 @@ require './controllers/historic_controller.php';
                 <td class="comm-ele">
                 <?= $commande['prix_total']?>
                 </td>
-                <td class="comm-ele">
-                    <form method="post">
-                        <button class="comm-payer button" name="consult" value="<?= $commande['id']?>">consulter</button>
-                    </form>
-                </td>
-                <td class="comm-ele">
-                    <button class="comm-payer button">pdf</button>
-                </td>
+                <form method="post">
+                    <td class="comm-ele">
+                        <button class="comm-payer button" name="consult" onclick="this.form.submit()" value="<?= $commande['id']?>">consulter</button>
+                    </td>
+                    <td class="comm-ele">
+                        <button class="comm-payer button" name="getPdf" onclick="this.form.submit()" value="<?= $commande['id']?>">pdf</button>
+                    </td>
+                </form>
             </tr>
             <?php endforeach;}?>
         </table>
