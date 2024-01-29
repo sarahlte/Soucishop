@@ -59,13 +59,35 @@ include './controllers/basket_controller.php';
                     <?= $nb ?>
                 </td>
                 <td class="comm-ele">
-                    <?= $prix_total?>0
+                    <?= $prix_total?>
                 </td>
                 <td class="comm-ele modif">
                     <button class="comm-modif" onclick="del(<?= $item['id']?>,<?= $type_js ?>)">-</button>
                     <button class="comm-modif" onclick="add(<?= $item['id']?>,<?= $type_js ?>)">+</button>
                 </td>
             </tr>
+            <?php                 
+            if(isset($_SESSION['promo-code']) && isset($_SESSION['promo-valeur']) && isset($_SESSION['promo-type'])){                
+            ?>
+            <tr class="comm-line" id="livraison-div" >
+                <td class="comm-ele">
+                    
+                </td>
+                <td class="comm-ele">
+                    Code promotionnel
+                </td>
+                <td class="comm-ele">
+                    <?= $_SESSION['promo-code']?>
+                </td>
+                <td class="comm-ele" colspan="2">
+                    - <?php 
+                if($_SESSION['promo-type'] == 'pourcentage'){
+                    echo $_SESSION['promo-valeur'].'%';
+                } else if ($_SESSION['promo-type'] == 'reduction'){
+                    echo $_SESSION['promo-valeur'].'€';
+                }?>
+                </td>
+            </tr> <?php }?>
             <?php }?>
             <tr class="comm-line" id="livraison-div" <?php if(!empty($_COOKIE['hidden'])){echo ' '.$_COOKIE['hidden'];}?>>
                 <td class="comm-ele">
@@ -90,6 +112,7 @@ include './controllers/basket_controller.php';
                 </td>
                 <td class="comm-ele">
                 <?php 
+                $commande_total = 0;
                 foreach($items as $item){ 
                     $id = $item['id'];
                     $type = $item['type'];
@@ -104,7 +127,21 @@ include './controllers/basket_controller.php';
                     } elseif(isset($response['prix'])){
                         $commande_total += $response['prix']*$nb;
                     }
-                } echo $commande_total;?>
+                } 
+                if(isset($_SESSION['promo-code']) && isset($_SESSION['promo-valeur']) && isset($_SESSION['promo-type'])){
+                    if($_SESSION['promo-type'] == 'pourcentage'){
+                        $commande_total = $commande_total - ($commande_total/100*$_SESSION['promo-valeur']);
+                    } else if ($_SESSION['promo-type'] == 'reduction'){
+                        $commande_total -= $_SESSION['promo-valeur'];
+                    }
+                }
+                if(isset($_COOKIE['livraison'])){
+                    $livraison_js = $_COOKIE['livraison'];
+                    if($livraison_js == 'true'){
+                        $commande_total += 5;
+                    } 
+                }
+                echo $commande_total;?>
                 <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
                 <input type="hidden" name="commande_total" value="<?= $commande_total ?>"/>
                 </td>
@@ -113,6 +150,11 @@ include './controllers/basket_controller.php';
                 </td>
             </tr>
         </table>
+        <div>
+            <label for="discount">Code promotionnel</label>
+            <input type="text" name="discount">
+            <button name="b-discount">Valider</button>
+        </div>
         <div class="register-display" id="livraison-infos" <?php if(!empty($_COOKIE['hidden'])){echo ' '.$_COOKIE['hidden'];}?>>
             <div class="register-disp">
                 <label for="nom" class="login-label">Nom</label>

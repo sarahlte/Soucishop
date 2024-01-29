@@ -8,7 +8,7 @@ if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $recu = 'oui';
+    $recu = date('Y-m-d'); 
     $update = $bdd->prepare("UPDATE commande SET recu=:recu WHERE id=:id");
     $update->execute([
         'id' => $_POST['id'],

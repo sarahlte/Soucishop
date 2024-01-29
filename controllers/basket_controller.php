@@ -44,7 +44,25 @@ if(isset($_SESSION['panier'])){
     $total = $panier->getTotalItem();
     var_dump($items);
 
-
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !empty($items) && isset($_POST['discount'])){
+        unset($_SESSION['promo-type']);
+        unset($_SESSION['promo-code']);
+        unset($_SESSION['promo-valeur']);
+        $req = $bdd->prepare("SELECT * from reduction");
+        $req->execute();
+        $promos = $req->fetchAll();
+        foreach($promos as $promo){
+            if($_POST['discount'] == $promo['code'] && $promo['effectif'] == 'oui'){
+                $_SESSION['promo-type']= $promo['type'];
+                $_SESSION['promo-valeur']=$promo['valeur'];
+                $_SESSION['promo-code']=$promo['code'];
+            }
+        }
+        if(!isset($_SESSION['promo-code'])){
+            $_SESSION['status'] = 'error';
+            $_SESSION['message'] = 'Code promotionnel invalide !';
+        }
+    }
     if(isset($_POST['id'])){
         $products = $bdd->prepare("SELECT * from produit WHERE $id = :id");
         $products->execute([

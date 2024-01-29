@@ -50,5 +50,12 @@ require './controllers/discount_controller.php';
             </td>
         </tr>
         <?php endforeach;}?>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="comm-ele modif">
+                <a class="comm-payer button" href="?page=add-discount">ajouter</a>
+            </td>
+        </tr>
     </table>
 </div>
