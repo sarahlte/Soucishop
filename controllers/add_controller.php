@@ -1,6 +1,14 @@
 <?php 
 require 'bdd.php';
 
+if (isset($_COOKIE['type_add'])){
+    if($_COOKIE['type_add'] == 'produit'){
+        $_SESSION['type']='produit';
+    } elseif($_COOKIE['type_add'] == 'menu'){
+        $_SESSION['type']='menu';
+    }
+}
+
 if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
     $products = $bdd->prepare("SELECT * FROM produit");
     $products->execute();
