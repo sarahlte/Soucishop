@@ -24,6 +24,8 @@ if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
         $req->execute([
             'id'=>htmlspecialchars($_POST['delete'])
         ]);
+        header("Location: ?page=homepage");
+        exit();
     }
 }
 
