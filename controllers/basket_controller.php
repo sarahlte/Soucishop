@@ -6,7 +6,6 @@ if(isset($_SESSION['panier'])){
 
 
     $panier = unserialize($_SESSION['panier']);
-
     
     if(isset($_COOKIE['id_js']) && isset($_COOKIE['funct_js']) && isset($_COOKIE['type_js'])){
         $id_js = $_COOKIE['id_js'];
