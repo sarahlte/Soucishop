@@ -83,7 +83,7 @@ include './controllers/basket_controller.php';
             </tr>
             <tr class="comm-line">
                 <td class="comm-ele" colspan="2">
-                <input type="checkbox" id="livraison" name="livraison" onclick="handleChange(this); track()"> Livraison à 5 €
+                <button onclick="track()"><input type="checkbox" id="livraison" name="livraison" value="true"> Livraison à 5 €</button>
                 </td>
                 <td class="comm-ele">
                     total

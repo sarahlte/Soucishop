@@ -61,8 +61,10 @@ function track() {
   console.log(document.getElementById("livraison").checked)
   if ( document.getElementById("livraison").checked==true ) {
     document.cookie = "livraison ="+ document.getElementById("livraison").checked;
+    return document.cookies.get("livraison");
   } else if(document.getElementById("livraison").checked==false){
     document.cookie = "livraison ="+document.getElementById("livraison").checked;
+    return document.cookies.get("livraison");
   }
   location.reload()
 };
