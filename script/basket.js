@@ -31,16 +31,6 @@ function effectuerAppelAjax() {
 
 
 
-  if(document.getElementById("livraison").checked == true){
-    document.getElementById("livraison-div").hidden= false;
-    document.getElementById("livraison-infos").hidden= false;
-  }else if (document.getElementById("livraison").checked == false){
-    document.getElementById("livraison-div").hidden = true;
-    document.getElementById("livraison-infos").hidden = true;
-  }
-
-
-
 function add(id, type){
   document.cookie = "id_js = " + id ;
   document.cookie = "type_js = " + type ;
@@ -58,7 +48,6 @@ function del(id, type){
 }
 
 function track() {
-  console.log(document.getElementById("livraison").checked)
   if ( document.getElementById("livraison").checked==true ) {
     document.cookie = "livraison ="+ document.getElementById("livraison").checked;
     document.cookie = "checked = checked";
