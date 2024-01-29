@@ -55,10 +55,10 @@ if(isset($_SESSION['panier'])){
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !empty($items) && isset($_POST['payer'])){
         $date = date('Y-m-d');
 
-        if(isset($_POST['livraison'])){
-            $livraison = 0;
+        if(isset($_COOKIE['livraison'])){
+            $livraison = $_COOKIE['livraison'];
         } else{
-            $livraison = 1;
+            $livraison = false;
         }
 
         $p_commande = '';
@@ -75,7 +75,7 @@ if(isset($_SESSION['panier'])){
                 $prix_total = $response['prix_vente']*$nb;
                 if(isset($_COOKIE['$livraison'])){
                     $livraison = $_COOKIE['$livraison'];
-                    if($livraison == 1){
+                    if($livraison == true){
                         $prix_total += 5;
                     }
                 }
@@ -83,14 +83,14 @@ if(isset($_SESSION['panier'])){
                 $prix_total = $response['prix']*$nb;
                 if(isset($_COOKIE['$livraison'])){
                     $livraison = $_COOKIE['$livraison'];
-                    if($livraison == 1){
+                    if($livraison == true){
                         $prix_total += 5;
                     }
                 }
             }
             $p_commande = $p_commande.$nb.' x '.$response['nom'].' - '.$prix_total.'€ </br>';
         }
-        if($livraison == 1){
+        if($livraison == 'true'){
             if (!empty($_POST['cadresse'])){
                 $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, livraison, nom, prenom, adresse, code_postal, ville, compelement_d_adresse, produits) VALUES ( :date, :prix_total, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :compelement_d_adresse, :produits)");
                 $commande->execute([
@@ -120,7 +120,7 @@ if(isset($_SESSION['panier'])){
                 ]); 
             }
 
-        } elseif($livraison == 0){
+        } elseif($livraison == 'false'){
             $response = $bdd->prepare("SELECT * FROM utilisateur WHERE id = :id");
             $response->execute([
                 'id'=> $panier->getUserId()
@@ -146,6 +146,9 @@ if(isset($_SESSION['panier'])){
             $_SESSION['panier'] = serialize($panier);
             header("Location: ?page=homepage");
             exit();
+        } else {
+            $_SESSION['status'] = 'error';
+            $_SESSION['message'] = 'Erreur !';
         }
     } 
 } else {
