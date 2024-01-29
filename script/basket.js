@@ -30,16 +30,16 @@ function effectuerAppelAjax() {
 
 
 
-function handleChange(checkbox) {
-  if(checkbox.checked == true){
-      document.getElementById("livraison-div").hidden= false;
-      document.getElementById("livraison-infos").hidden= false;
-  }else{
-      document.getElementById("livraison-div").hidden = true;
-      document.getElementById("livraison-infos").hidden = true;
- }
- location.reload()
-}
+
+  if(document.getElementById("livraison").checked == true){
+    document.getElementById("livraison-div").hidden= false;
+    document.getElementById("livraison-infos").hidden= false;
+  }else if (document.getElementById("livraison").checked == false){
+    document.getElementById("livraison-div").hidden = true;
+    document.getElementById("livraison-infos").hidden = true;
+  }
+
+
 
 function add(id, type){
   document.cookie = "id_js = " + id ;
@@ -61,10 +61,12 @@ function track() {
   console.log(document.getElementById("livraison").checked)
   if ( document.getElementById("livraison").checked==true ) {
     document.cookie = "livraison ="+ document.getElementById("livraison").checked;
-    return document.cookies.get("livraison");
+    document.cookie = "checked = checked";
+    document.cookie = "hidden = hidden";
   } else if(document.getElementById("livraison").checked==false){
     document.cookie = "livraison ="+document.getElementById("livraison").checked;
-    return document.cookies.get("livraison");
+    document.cookie = "checked = ";
+    document.cookie = "hidden = hidden";
   }
-  location.reload()
+
 };

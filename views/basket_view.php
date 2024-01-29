@@ -2,7 +2,7 @@
 include './controllers/basket_controller.php';
 ?>
 <script serc="./script/basket.js"></script>
-<div class="display-basket">
+<div class="display-basket" id="form-name">
     <form method="post" class="comm-table">
         <table class="comm-table">
             <thead>
@@ -83,7 +83,7 @@ include './controllers/basket_controller.php';
             </tr>
             <tr class="comm-line">
                 <td class="comm-ele" colspan="2">
-                <button onclick="track()"><input type="checkbox" id="livraison" name="livraison" value="true"> Livraison à 5 €</button>
+               <input type="checkbox" id="livraison" name="livraison" onchange="track(); this.form.submit();" <?php if(!empty($_COOKIE['checked'])){ echo $_COOKIE['checked'];} if(!empty($_COOKIE['hidden'])){echo $_COOKIE['hidden'];}?>> Livraison à 5 €
                 </td>
                 <td class="comm-ele">
                     total
