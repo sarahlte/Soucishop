@@ -56,6 +56,7 @@ if(isset($_SESSION['panier'])){
                 $_SESSION['promo-type']= $promo['type'];
                 $_SESSION['promo-valeur']=$promo['valeur'];
                 $_SESSION['promo-code']=$promo['code'];
+                $_SESSION['promo_id']=$promo['id'];
             }
         }
         if(!isset($_SESSION['promo-code'])){
@@ -165,6 +166,14 @@ if(isset($_SESSION['panier'])){
                 'id_commande'=>$id_commande,
                 'id_user'=>$id_user
             ]);
+
+            if(isset($_SESSION['promo-id'])){
+                $code = $bdd->prepare("INSERT INTO commande_reduction (commande_id, reduction_id) VALUES (:c_id, :r_id)");
+                $code->execute([
+                    'c_id'=>$id_commande,
+                    'r_id'=>$_SESSION['promo-id']
+                ]);
+            }
 
             $_SESSION['status'] = 'success';
             $_SESSION['message'] = 'Votre commande a bien été passée !';
