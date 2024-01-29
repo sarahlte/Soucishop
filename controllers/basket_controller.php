@@ -52,7 +52,7 @@ if(isset($_SESSION['panier'])){
         ]);
     }
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !empty($items)){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !empty($items) && isset($_POST['payer'])){
         $date = date('Y-m-d');
 
         if(isset($_POST['livraison'])){
