@@ -2,7 +2,7 @@
 
 Ce projet est facilement manipulable. Pour le faire fonctionner, il suffit :
 
-    1. D'installer la base de données nommée "soucishop" dans PhpMyAdmin.
+    1. D'installer la base de données nommée "soucishop" dans PhpMyAdmin (le schéma est trouvable sous le nom "base_de_données.pdf").
 
 Les dépendances utilisés sont : 
 
@@ -27,7 +27,7 @@ Les dépendances utilisés sont :
     1. ajouter / supprimer un produit
     2. ajouter un aliment
     3. ajouter / supprimer un menu
-    4. associer une catégorie à un nouveau produit 
+    4. associer une catégorie à un nouveau produit
     5. associer des aliment à un nouveau produit
     6. associer des produits à un nouveau menu
     7. consulter l'historique des commandes et les marquer comme livrées
