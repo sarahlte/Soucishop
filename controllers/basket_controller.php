@@ -213,6 +213,13 @@ if(isset($_SESSION['panier'])){
             $_SESSION['message'] = 'Erreur !';
         }
     } 
+
+    if(isset($_POST['vide'])){
+        $panier = new Panier($_SESSION['id']);
+        $_SESSION['panier']= serialize($panier);
+        $_SESSION['nb'] = 0;
+        header("Refresh:0");
+    }
 } else {
     $_SESSION['status'] = 'error';
     $_SESSION['message'] = 'Veuillez vous connecter pour consulter le panier !';
@@ -220,8 +227,3 @@ if(isset($_SESSION['panier'])){
     exit();
 }
 
-if(isset($_POST['vide'])){
-    $panier = new Panier($_SESSION['id']);
-    $_SESSION['panier']= serialize($panier);
-    $_SESSION['nb'] = 0;
-}
