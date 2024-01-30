@@ -3,6 +3,7 @@
 require 'vendor/autoload.php';
 use Dompdf\Dompdf;
 
+if(isset($_SESSION['id'])){
 $utilisateurs = $bdd->prepare("SELECT commande_id FROM commande_utilisateur WHERE utilisateur_id = :utilisateur_id");
 $utilisateurs->execute([
     ':utilisateur_id'=>$_SESSION['id'],
@@ -36,4 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['getPdf'])) {
     }
 
 
+}}else {
+        $_SESSION['status'] = 'error';
+        $_SESSION['message'] = 'Veuillez vous connecter pour consulter cette page !';
+        header("Location: ?page=login");
+        exit();
 }

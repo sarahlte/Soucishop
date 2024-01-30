@@ -1,7 +1,8 @@
 <?php
 require './controllers/historic_controller.php';
-?>
 
+if(isset($_SESSION['id'])){
+?>
 <div class="display-log">
         <table class="comm-table">
             <tr class="comm-head">
@@ -65,4 +66,4 @@ require './controllers/historic_controller.php';
             <?php }}?>
         </table>
     </form>
-</div>
+</div><?php }?>

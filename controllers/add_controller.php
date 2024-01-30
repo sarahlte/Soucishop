@@ -6,6 +6,8 @@ if (isset($_COOKIE['type_add'])){
         $_SESSION['type']='produit';
     } elseif($_COOKIE['type_add'] == 'menu'){
         $_SESSION['type']='menu';
+    } elseif($_COOKIE['type_add'] == 'ingredient'){
+        $_SESSION['type']='ingredient';
     }
 }
 

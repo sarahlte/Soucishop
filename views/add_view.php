@@ -3,6 +3,13 @@ require './controllers/add_controller.php'; ?>
 <script src="./script/add.js"></script>
 <div class="container hp-card-contain">
     <div class="hp-card">
+        <div class="hp-img"><img src="./assets/ingredient.jpg" class="hp-button-img"></div>
+        <div class="hp-txt-card">
+            <div class="card-title">Les Ingrédients</div>
+            <a href="?page=add-ingredient" class="card-link" onclick="add('ingredient')">Ajouter un Ingrédient -></a>
+        </div>
+    </div>
+    <div class="hp-card">
         <div class="hp-img"><img src="./assets/sushi.jpg" class="hp-button-img"></div>
         <div class="hp-txt-card">
             <div class="card-title">Les produits</div>
