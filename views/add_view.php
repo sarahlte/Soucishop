@@ -5,8 +5,8 @@ require './controllers/add_controller.php'; ?>
     <div class="hp-card">
         <div class="hp-img"><img src="./assets/ingredient.jpg" class="hp-button-img"></div>
         <div class="hp-txt-card">
-            <div class="card-title">Les Ingrédients</div>
-            <a href="?page=add-ingredient" class="card-link" onclick="add('ingredient')">Ajouter un Ingrédient -></a>
+            <div class="card-title">Les ingrédients</div>
+            <a href="?page=add-ingredient" class="card-link" onclick="add('ingredient')">Ajouter un ingrédient -></a>
         </div>
     </div>
     <div class="hp-card">

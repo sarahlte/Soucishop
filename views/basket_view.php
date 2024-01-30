@@ -150,10 +150,13 @@ include './controllers/basket_controller.php';
                 </td>
             </tr>
         </table>
-        <div>
-            <label for="discount">Code promotionnel</label>
-            <input type="text" name="discount">
-            <button name="b-discount">Valider</button>
+        <div class="navbar-contain">
+            <span>
+                <label for="discount">Code promotionnel</label>
+                <input type="text" name="discount">
+                <button name="b-discount">Valider</button>
+            </span>
+            <button class="comm-vide button" name="vide">vider le panier</button>
         </div>
         <div class="register-display" id="livraison-infos" <?php if(!empty($_COOKIE['hidden'])){echo ' '.$_COOKIE['hidden'];}?>>
             <div class="register-disp">

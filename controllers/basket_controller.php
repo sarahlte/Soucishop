@@ -198,3 +198,9 @@ if(isset($_SESSION['panier'])){
     header("Location: ?page=homepage");
     exit();
 }
+
+if(isset($_POST['vide'])){
+    $panier = new Panier($_SESSION['id']);
+    $_SESSION['panier']= serialize($panier);
+    $_SESSION['nb'] = 0;
+}

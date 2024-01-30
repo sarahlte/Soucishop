@@ -43,6 +43,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add']) && isset($_POST[
         $_SESSION['nb'] = $panier->getTotalItem();
         $_SESSION['panier'] = serialize($panier);
     }
+    
+    $_SESSION['status'] = 'success';
+    $_SESSION['message'] = 'Votre article a été ajouté au panier.';
+
 } elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add']) && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && !isset($_SESSION['panier'])){
     $_SESSION['status'] = 'error';
     $_SESSION['message'] = 'Veuillez vous connecter pour ajouter un article au panier!';
