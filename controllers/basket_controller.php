@@ -113,12 +113,32 @@ if(isset($_SESSION['panier'])){
                 }
             }
             $p_commande = $p_commande.$nb.' x '.$response['nom'].' - '.$prix_total.'€ </br>';
+            $p_achat = 0;
+            if($type == 'produit'){
+                $p_achat += $response['prix_achat']*$nb;
+            } elseif($type = 'menu'){
+                $menu_produits = $bdd->prepare("SELECT * from menu_produit WHERE menu_id = :id");
+                $menu_produits->execute([
+                    'id'=>$response['id']
+                ]);
+                $prods_menu = $menu_produits->fetchAll();
+                foreach($prods_menu as $prod_menu){
+                    var_dump($prod_menu['produit_id']);
+                    $p_menu = $bdd->prepare("SELECT * from produit WHERE id = :produit_id");
+                    $p_menu->execute([
+                        'produit_id'=>$prod_menu['produit_id']
+                    ]);
+                    $prod = $p_menu->fetch();
+                    $p_achat += $prod['prix_achat']*$prod_menu['nb']*$nb;
+                }
+            }
         }
         if($livraison == 'true'){
             if (!empty($_POST['cadresse'])){
-                $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, livraison, nom, prenom, adresse, code_postal, ville, compelement_d_adresse, produits) VALUES ( :date, :prix_total, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :compelement_d_adresse, :produits)");
+                $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, prix_achat, livraison, nom, prenom, adresse, code_postal, ville, compelement_d_adresse, produits) VALUES ( :date, :prix_total, :prix_achat, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :compelement_d_adresse, :produits)");
                 $commande->execute([
                     'prix_total'=>htmlspecialchars($_POST['commande_total']),
+                    'prix_achat'=>htmlspecialchars($p_achat),
                     'livraison'=>htmlspecialchars($livraison),
                     'nom'=>htmlspecialchars($_POST['nom']),
                     'prenom'=>htmlspecialchars($_POST['prenom']),
@@ -130,9 +150,10 @@ if(isset($_SESSION['panier'])){
                     'date'=>htmlspecialchars($date)
                 ]);  
             } else {
-                $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, livraison, nom, prenom, adresse, code_postal, ville, produits) VALUES (:date, :prix_total, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :produits");
+                $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, prix_achat, livraison, nom, prenom, adresse, code_postal, ville, produits) VALUES (:date, :prix_total, :prix_achat, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :produits");
                 $commande->execute([
                     'prix_total'=>htmlspecialchars($_POST['commande_total']),
+                    'prix_achat'=>htmlspecialchars($p_achat),
                     'livraison'=>htmlspecialchars($livraison),
                     'nom'=>htmlspecialchars($_POST['nom']),
                     'prenom'=>htmlspecialchars($_POST['prenom']),
@@ -150,10 +171,11 @@ if(isset($_SESSION['panier'])){
                 'id'=> $panier->getUserId()
             ]);
             $user = $response->fetch();
-            $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, livraison, nom, prenom, produits) VALUES (:date, :prix_total, :livraison, :nom, :prenom, :produits)");;
+            $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, prix_achat, livraison, nom, prenom, produits) VALUES (:date, :prix_total, :prix_achat, :livraison, :nom, :prenom, :produits)");;
 
             $commande->execute([
                 'prix_total'=>htmlspecialchars($_POST['commande_total']),
+                'prix_achat'=>htmlspecialchars($p_achat),
                 'livraison'=>htmlspecialchars($livraison),
                 'nom'=>htmlspecialchars($user['nom']),
                 'prenom'=>htmlspecialchars($user['prenom']), 

@@ -17,6 +17,7 @@ if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
 
     $aliments = $bdd->prepare("SELECT * FROM aliment");
     $aliments->execute();
+
     if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && $_POST['type'] === 'produit'){
         if (isset($_POST['nom']) && isset($_POST['prix_achat']) && isset($_POST['prix_vente']) && isset($_POST['categorie']) && isset($_POST['img1'])){
             $ali = [];
@@ -109,6 +110,22 @@ if (isset($_SESSION['role']) && $_SESSION['role']=='admin'){
             echo 'champs manquants';
         }
     }
-    
+    if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['token']) && $_POST['token'] === $_SESSION['token'] && $_POST['type'] === 'ingredient'){
+        if (isset($_POST['nom']) && isset($_POST['calories'])){
+            $ingredients = $bdd->prepare("INSERT INTO aliments (nom, calories, poids) VALUES (:nom, :calories, :poids)");
+            $ingredients->execute([
+                'nom'=>htmlspecialchars($_POST['nom']),
+                'calories'=>htmlspecialchars($_POST['calories']),
+                'poids'=>100
+            ]);
+            if($ingredients->execute()){
+                $_SESSION['status'] = 'success';
+                $_SESSION['message'] = 'Ingrédient ajouté !';
+                header("Location: ?page=connexion");
+            }
+        } else {
+            echo 'champs manquants';
+        }
+    }
 }
 
