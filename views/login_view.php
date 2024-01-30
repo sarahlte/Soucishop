@@ -13,6 +13,7 @@ require './controllers/login_controller.php';
                     <a href="?page=register" class="register-button">s'inscrire -></a>
                 </div>
                 <form action="" method="post" enctype="multipart/form-data"class="register-display">
+                    <input type="hidden" name='token' value='<?= $_SESSION['token']?>'>
                     <div class="register-disp">
                         <label for="email" class="register-label">E-mail</label>
                         <input type="email" placeholder="E-mail" name="email" class="register-input">

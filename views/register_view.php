@@ -13,6 +13,7 @@ require './controllers/register_controller.php'
                     <a href="?page=login" class="register-button">se connecter -></a>
                 </div>
                 <form action="" method="post" enctype="multipart/form-data" class="register-display">
+                    <input type="hidden" name='token' value='<?= $_SESSION['token']?>'>
                     <div class="register-disp">
                         <label for="nom" class="login-label">Nom</label>
                         <input type="text" placeholder="Nom" name="nom" class="register-input">

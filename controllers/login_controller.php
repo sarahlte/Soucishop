@@ -3,7 +3,7 @@
 require 'bdd.php';
 require 'class.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token']) {
     $email = htmlspecialchars($_POST['email']);
     $query = "SELECT * FROM utilisateur WHERE email = :email";
     $stmt = $bdd->prepare($query);

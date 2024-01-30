@@ -1,13 +1,12 @@
-<?php
-
+<?php 
 require 'bdd.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['token'] === $_SESSION['token']) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['admin']) && isset($_POST['token']) && $_POST['token'] === $_SESSION['token']) {
     $nom = htmlspecialchars($_POST['nom']);
     $prenom = htmlspecialchars($_POST['prenom']);
     $email = htmlspecialchars($_POST['email']);
     $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT );
-    $role= 'user';
+    $role = 'admin';
     
 
     $stmt = $bdd->prepare("INSERT INTO utilisateur (nom, prenom, email, password, role) VALUES (?, ?, ?, ?, ?)");
@@ -19,8 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token']) && $_POST['t
 
     if ($stmt->execute()) {
         $_SESSION['status'] = 'success';
-        $_SESSION['message'] = 'Vous vous êtes bien enregistré.e !';
-        header("Location: ?page=connexion");
+        $_SESSION['message'] = 'Nouvel administrateur ajouté !';
+        header("Location: ?page=homepage");
         exit();
+    } else {
+        echo "ERROR - Echec de la création d'administrateur";
     }
 }
