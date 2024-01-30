@@ -572,7 +572,7 @@ align-items: center;
   padding: 0;
 }
 
-.comm-payer{
+.comm-payer, .comm-vide{
   background-color: var(--mainc1);
   border: 0;
   font-family: inter;
@@ -583,6 +583,10 @@ align-items: center;
   text-transform: uppercase;
   text-align: center;
   width: 100%;
+}
+
+.comm-vide{
+  width: 20%;
 }
 
 table {
