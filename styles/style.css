@@ -681,6 +681,25 @@ ul{
 }
 
 
+
+/* GRAPH */
+
+
+.graph-log{
+  width: 80%;
+  margin: 50px auto;
+  background-color: var(--bg2);
+}
+
+.revenus-display{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+
+
 /* RESPONSIVE */
 
 
