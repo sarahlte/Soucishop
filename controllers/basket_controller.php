@@ -123,7 +123,6 @@ if(isset($_SESSION['panier'])){
                 ]);
                 $prods_menu = $menu_produits->fetchAll();
                 foreach($prods_menu as $prod_menu){
-                    var_dump($prod_menu['produit_id']);
                     $p_menu = $bdd->prepare("SELECT * from produit WHERE id = :produit_id");
                     $p_menu->execute([
                         'produit_id'=>$prod_menu['produit_id']
@@ -184,7 +183,7 @@ if(isset($_SESSION['panier'])){
             ]);    
         }
 
-        if ($commande->execute()) {
+        if (isset($commande)) {
             $id_commande= $bdd->lastInsertId();
             $id_user = $panier->getUserId();
 
