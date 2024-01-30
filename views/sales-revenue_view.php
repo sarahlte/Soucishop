@@ -1,7 +1,7 @@
 <?php 
 require "./controllers/graph_controller.php";
 ?>
-<div>
+<div class='revenu'>
     <div>
         <p>Chiffre d'affaire de la semaine : <?= $ca_semaine?></p>
         <p>Bénéfice de la semaine : <?= $benef_semaine?></p>
