@@ -84,7 +84,7 @@ if(isset($_SESSION['panier'])){
         } else{
             $livraison = false;
         }
-
+        $p_achat = 0;
         $p_commande = '';
         foreach($items as $item){
             $id = $item['id'];
@@ -113,7 +113,7 @@ if(isset($_SESSION['panier'])){
                 }
             }
             $p_commande = $p_commande.$nb.' x '.$response['nom'].' - '.$prix_total.'€ </br>';
-            $p_achat = 0;
+            
             if($type == 'produit'){
                 $p_achat += $response['prix_achat']*$nb;
             } elseif($type = 'menu'){
@@ -131,6 +131,7 @@ if(isset($_SESSION['panier'])){
                     $p_achat += $prod['prix_achat']*$prod_menu['nb']*$nb;
                 }
             }
+            var_dump($p_achat);
         }
         if($livraison == 'true'){
             if (!empty($_POST['cadresse'])){
@@ -149,7 +150,7 @@ if(isset($_SESSION['panier'])){
                     'date'=>htmlspecialchars($date)
                 ]);  
             } else {
-                $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, prix_achat, livraison, nom, prenom, adresse, code_postal, ville, produits) VALUES (:date, :prix_total, :prix_achat, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :produits");
+                $commande = $bdd->prepare("INSERT INTO commande (date, prix_total, prix_achat, livraison, nom, prenom, adresse, code_postal, ville, produits) VALUES (:date, :prix_total, :prix_achat, :livraison, :nom, :prenom, :adresse, :code_postal, :ville, :produits)");
                 $commande->execute([
                     'prix_total'=>htmlspecialchars($_POST['commande_total']),
                     'prix_achat'=>htmlspecialchars($p_achat),
@@ -203,7 +204,7 @@ if(isset($_SESSION['panier'])){
 
             $_SESSION['status'] = 'success';
             $_SESSION['message'] = 'Votre commande a bien été passée !';
-            $panier = new Panier($user['id']);
+            $panier = new Panier($_SESSION['id']);
             $_SESSION['nb'] = $panier->getTotalItem();
             $_SESSION['panier'] = serialize($panier);
             header("Location: ?page=homepage");
