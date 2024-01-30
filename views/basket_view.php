@@ -7,19 +7,19 @@ include './controllers/basket_controller.php';
         <table class="comm-table">
             <thead>
                 <tr class="comm-head">
-                    <td class="comm-tit">
+                    <td class="comm-tit" data-label="produit">
                         produit
                     </td>
-                    <td class="comm-tit">
+                    <td class="comm-tit"data-label="prix">
                         prix unitaire
                     </td>
-                    <td class="comm-tit">
+                    <td class="comm-tit"data-label="quantite">
                         quantité
                     </td>
-                    <td class="comm-tit">
+                    <td class="comm-tit"data-label="prix_tot">
                         prix total
                     </td>
-                    <td class="comm-tit">
+                    <td class="comm-tit"data-label="modif">
                         modifier
                     </td>
                 </tr>
@@ -150,7 +150,7 @@ include './controllers/basket_controller.php';
                 </td>
             </tr>
         </table>
-        <div class="navbar-contain">
+        <div class="basket-contain">
             <span>
                 <label for="discount">Code promotionnel</label>
                 <input type="text" name="discount">
