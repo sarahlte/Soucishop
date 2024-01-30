@@ -2,6 +2,7 @@
 require './controllers/products_controller.php';
 ?>
 <script src="./script/caroussel.js"></script>
+<script src="./script/delete.js"></script>
 
 <div>
     <div class="container hp-card-contain">
@@ -46,18 +47,18 @@ require './controllers/products_controller.php';
                         <form method='post'>
                             <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
                             <input type="hidden" name="type" value="menu"/>
-                            <button type='submit' name='add' value="<?= $menu['id']?>" class="card-link-price-a">ajouter au panier -></button>
+                            <button type='submit' name='add' value="<?= $menu['id']?>" class="card-link-price-a button">ajouter au panier -></button>
                         </form>
                         <?php if ( isset($_SESSION['role']) && $_SESSION['role']=='admin'){?>
                             <form action="?page=modify" method="post">
                                 <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
                                 <input type="hidden" name="type" value="menu"/>
-                                <button type="submit" name="id" class="card-link-price-a" value="<?= $menu['id']?>">Modifier</button>
+                                <button type="submit" name="id" class="card-link-price-a button" value="<?= $menu['id']?>">Modifier</button>
                             </form>
                             <form  method="post">
                                 <input type="hidden" name="token" value="<?= $_SESSION['token']?>" />
                                 <input type="hidden" name="type" value="menu"/>
-                                <button type="submit" name="delete" class="card-link-price-a" value="<?= $menu['id']?>">X</button>
+                                <button type="submit" class="card-link-price-a button" value="<?= $menu['id']?>">X</button>
                             </form>
                         <?php }?>
                     </div>

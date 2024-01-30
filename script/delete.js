@@ -1,35 +1,13 @@
 function toDelete(){
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: "btn btn-success",
-      cancelButton: "btn btn-danger"
-    },
-    buttonsStyling: false
-  });
-  swalWithBootstrapButtons.fire({
+  swal({
     title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
+    text: "Some description",
+    type: "warning",
     showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
-    cancelButtonText: "No, cancel!",
-    reverseButtons: true
-  }).then((result) => {
-    if (result.isConfirmed) {
-      swalWithBootstrapButtons.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
-      });
-    } else if (
-      /* Read more about handling dismissals below */
-      result.dismiss === Swal.DismissReason.cancel
-    ) {
-      swalWithBootstrapButtons.fire({
-        title: "Cancelled",
-        text: "Your imaginary file is safe :)",
-        icon: "error"
-      });
-    }
-  });
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, please redirect the page!",
+    closeOnConfirm: false
+}, function() {
+  location.href="./views/menus_view.php"
+});
     }
