@@ -34,4 +34,5 @@ Les dépendances utilisés sont :
     8. consulter son chiffre d'affaire et son bénéfice du jour / des 7 derniers jours sous forme de graphique
     9. consulter ses meilleures ventes des 7 derniers jours sous forme de graphique
     10. Ajouter des code promotionnels et choisir si on veut les rendre effectifs ou pas
+    11. Ajouter un nouvel administrateur
 - Le site est responsive

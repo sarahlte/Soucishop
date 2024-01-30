@@ -30,7 +30,7 @@
             <li><a class="menu__item" href="?page=historic">Mes commandes</a></li>
             <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'):?>
             <li><a class="menu__item" href="?page=add">Ajouter un produit</a></li>
-            <li><a class="menu__item" href="?page=add-admin">Ajouter un utilisateur</a></li>
+            <li><a class="menu__item" href="?page=add-admin">Ajouter un administrateur</a></li>
             <li><a class="menu__item" href="?page=discount">Gestion des bons de réduction</a></li>
             <li><a class="menu__item" href="?page=order">Commandes</a></li>
             <li><a class="menu__item" href="?page=sales-revenue">Chiffre d'affaire</a></li>
