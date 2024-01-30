@@ -33,7 +33,7 @@
             <li><a class="menu__item" href="?page=add-admin">Ajouter un utilisateur</a></li>
             <li><a class="menu__item" href="?page=discount">Gestion des bons de réduction</a></li>
             <li><a class="menu__item" href="?page=order">Commandes</a></li>
-            <li><a class="menu__item" href="?page=graph">Chiffre d'affaire</a></li>
+            <li><a class="menu__item" href="?page=sales-revenue">Chiffre d'affaire</a></li>
             <?php endif ?>
             <li><a class="menu__item" href="?page=contact">Nous contacter</a></li>
           </ul>
